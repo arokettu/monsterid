@@ -36,8 +36,10 @@ function build_monster($seed = null, $size = null)
     );
 
     // create background
-    $monster = imagecreatetruecolor(120, 120)
-    or die('GD image create failed');
+    $monster = imagecreatetruecolor(120, 120);
+    if (!$monster) {
+        throw new ImageNotCreatedException('GD image create failed');
+    }
     $white = imagecolorallocate($monster, 255, 255, 255);
     imagefill($monster, 0, 0, $white);
 
@@ -69,7 +71,7 @@ function build_monster($seed = null, $size = null)
     if ($size && $size < 400) {
         $out = imagecreatetruecolor($size, $size);
         if (!$out) {
-            throw new ImageNotCreatedException("GD image create failed");
+            throw new ImageNotCreatedException('GD image create failed');
         }
         imagecopyresampled($out, $monster, 0, 0, 0, 0, $size, $size, 120, 120);
 
