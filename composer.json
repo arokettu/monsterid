@@ -1,6 +1,7 @@
 {
     "name": "sandfox-im/monsterid",
     "description": "MonsterID is a method to generate a unique monster image based upon a certain identifier (IP address, email address, whatever). It can be used to automatically provide personal avatar images in blog comments or other community services.",
+    "keywords": ["avatar", "monsterid"],
     "require": {
         "php": ">= 5.3.3",
         "ext-gd": "*"
