@@ -27,7 +27,7 @@ function build_monster($seed = null, $size = null)
 
     // add parts
     foreach ($parts as $part => $num) {
-        $file = __DIR__ . '/parts/' . $part . '_' . $num . '.png';
+        $file = __DIR__ . '/../assets/parts/' . $part . '_' . $num . '.png';
 
         $im = imagecreatefrompng($file);
         if (!$im) die('Failed to load ' . $file);
@@ -49,7 +49,7 @@ function build_monster($seed = null, $size = null)
 
     // resize if needed, then output
     if ($size && $size < 400) {
-        $out = @imagecreatetruecolor($size, $size)
+        $out = imagecreatetruecolor($size, $size)
         or die("GD image create failed");
         imagecopyresampled($out, $monster, 0, 0, 0, 0, $size, $size, 120, 120);
         header("Content-type: image/png");
