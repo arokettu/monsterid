@@ -2,8 +2,24 @@
 
 namespace SandFoxIM\MonsterID;
 
+class MonsterException extends \RuntimeException {}
+class PartNotLoadedException extends MonsterException {}
+class ImageNotCreatedException extends MonsterException {}
+
+/**
+ * @param  string $seed any string id like email or openid
+ * @param  int    $size Image size (square size x size)
+ * @return string       PNG image content (dump it to page or save to file)
+ * @throws PartNotLoadedException
+ * @throws ImageNotCreatedException
+ */
 function build_monster($seed = null, $size = null)
 {
+    static $PARTS_PATH;
+    if (!$PARTS_PATH) {
+        $PARTS_PATH = realpath(__DIR__ . '/../assets/parts');
+    }
+
     // init random seed
     if ($seed) {
         srand(hexdec(substr(md5($seed), 0, 6)));
@@ -19,7 +35,7 @@ function build_monster($seed = null, $size = null)
         'mouth' => rand(1, 10)
     );
 
-    // create backgound
+    // create background
     $monster = imagecreatetruecolor(120, 120)
     or die('GD image create failed');
     $white = imagecolorallocate($monster, 255, 255, 255);
@@ -27,10 +43,12 @@ function build_monster($seed = null, $size = null)
 
     // add parts
     foreach ($parts as $part => $num) {
-        $file = __DIR__ . '/../assets/parts/' . $part . '_' . $num . '.png';
+        $file = "{$PARTS_PATH}/{$part}_{$num}.png";
 
         $im = imagecreatefrompng($file);
-        if (!$im) die('Failed to load ' . $file);
+        if (!$im) {
+            throw new PartNotLoadedException('Failed to load ' . $file);
+        }
         imageSaveAlpha($im, true);
         imagecopy($monster, $im, 0, 0, 0, 0, 120, 120);
         imagedestroy($im);
@@ -49,16 +67,21 @@ function build_monster($seed = null, $size = null)
 
     // resize if needed, then output
     if ($size && $size < 400) {
-        $out = imagecreatetruecolor($size, $size)
-        or die("GD image create failed");
+        $out = imagecreatetruecolor($size, $size);
+        if (!$out) {
+            throw new ImageNotCreatedException("GD image create failed");
+        }
         imagecopyresampled($out, $monster, 0, 0, 0, 0, $size, $size, 120, 120);
-        header("Content-type: image/png");
-        imagepng($out);
-        imagedestroy($out);
+
         imagedestroy($monster);
     } else {
-        header("Content-type: image/png");
-        imagepng($monster);
-        imagedestroy($monster);
+        $out = $monster;
     }
+
+    ob_start();
+    imagepng($out);
+    $image = ob_get_clean();
+    imagedestroy($out);
+
+    return $image;
 }
