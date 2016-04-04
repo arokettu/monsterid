@@ -1,5 +1,7 @@
 # MonsterID
 
+[![Code Climate](https://codeclimate.com/github/sandfoxme/monsterid/badges/gpa.svg)](https://codeclimate.com/github/sandfoxme/monsterid)
+
 monsterid was inspired by a post by 
 [Don Park](http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification) 
 and the [Combinatoric Critters](http://www.levitated.net/bones/walkingFaces/index.html).
