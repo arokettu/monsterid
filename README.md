@@ -28,7 +28,7 @@ and just use ```build_monster(id, size)``` from the ```SandFoxIM\MonsterID``` na
 use function \SandFoxIM\MonsterID\build_monster;
 
 // make me an avatar
-$image = build_monster('sandfox@sandfox.im', 150);
+$image = build_monster('sandfox@sandfox.me', 150);
 
 // save it to file
 file_put_contents('avatar.png', $image);
@@ -36,4 +36,4 @@ file_put_contents('avatar.png', $image);
 
 ## Adaptation
 
-Adaptation as a composer library performed by [Anton "Sand Fox" Smirnov](https://sandfox.im/)
+Adaptation as a composer library performed by [Anton "Sand Fox" Smirnov](https://sandfox.me/)
