@@ -51,7 +51,7 @@ function build_monster($seed = null, $size = null)
         if (!$im) {
             throw new PartNotLoadedException('Failed to load ' . $file);
         }
-        imageSaveAlpha($im, true);
+        imagesavealpha($im, true);
         imagecopy($monster, $im, 0, 0, 0, 0, 120, 120);
         imagedestroy($im);
 
