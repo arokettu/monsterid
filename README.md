@@ -18,15 +18,17 @@ Install it with Composer
 
 ```json
 "require": {
-    "sandfox-im/monsterid": "*"
+    "sandfoxme/monsterid": "*"
 }
 ```
 
-and just use ```build_monster(id, size)``` from the ```SandFoxIM\MonsterID``` namespace
+and just use ```build_monster(id, size)``` from the ```SandFoxMe\MonsterID``` namespace
 
 ```php
+<?php
+
 // use function is available for PHP >= 5.6, call with full namespace in earlier versions
-use function \SandFoxIM\MonsterID\build_monster;
+use function \SandFoxMe\MonsterID\build_monster;
 
 // make me an avatar
 $image = build_monster('sandfox@sandfox.me', 150);

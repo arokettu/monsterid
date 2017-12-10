@@ -1,6 +1,6 @@
 <?php
 
-namespace SandFoxIM\MonsterID;
+namespace SandFoxMe\MonsterID;
 
 class MonsterException extends \RuntimeException {}
 class PartNotLoadedException extends MonsterException {}
