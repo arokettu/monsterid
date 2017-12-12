@@ -2,6 +2,8 @@
 
 [![Packagist](https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?maxAge=2592000)](https://packagist.org/packages/sandfoxme/monsterid)
 [![Packagist](https://img.shields.io/packagist/l/sandfoxme/monsterid.svg?maxAge=2592000)](https://creativecommons.org/licenses/by/2.5/)
+[![Travis](https://img.shields.io/travis/sandfoxme/monsterid.svg?maxAge=2592000)](https://travis-ci.org/sandfoxme/monsterid)
+[![Code Climate](https://img.shields.io/codeclimate/coverage/github/sandfoxme/monsterid.svg?maxAge=2592000)](https://codeclimate.com/github/sandfoxme/monsterid/coverage)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/sandfoxme/monsterid.svg?maxAge=2592000)](https://codeclimate.com/github/sandfoxme/monsterid)
 
 
