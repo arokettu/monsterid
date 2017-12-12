@@ -6,23 +6,32 @@ class Monster
 {
     private $seed;
 
+    private static $partsPath;
+
     public function __construct($seed)
     {
-        $this->seed = $seed;
+        $this->seed = null;
+
+        if ($seed) {
+            list($intSeed) = unpack('l',
+                substr(
+                    md5($seed, true),   // raw md5 hash
+                    0, 4                // 4 bytes
+                )
+            );                          // convert to 32bit signed integer
+            $this->seed = $intSeed;
+        }
     }
 
     public function build($size = null)
     {
         $seed = $this->seed;
 
-        static $PARTS_PATH;
-        if (!$PARTS_PATH) {
-            $PARTS_PATH = realpath(__DIR__ . '/../../assets/parts');
-        }
+        $PARTS_PATH = self::getPartsPath();
 
         // init random seed
         if ($seed) {
-            srand(hexdec(substr(md5($seed), 0, 6)));
+            srand($seed);
         }
 
         // throw the dice for body parts
@@ -86,5 +95,14 @@ class Monster
         imagedestroy($out);
 
         return $image;
+    }
+
+    private static function getPartsPath()
+    {
+        if (!self::$partsPath) {
+            self::$partsPath = realpath(__DIR__ . '/../../assets/parts');
+        }
+
+        return self::$partsPath;
     }
 }
