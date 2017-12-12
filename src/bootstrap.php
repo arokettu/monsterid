@@ -2,10 +2,6 @@
 
 namespace SandFoxMe\MonsterID;
 
-class MonsterException extends \RuntimeException {}
-class PartNotLoadedException extends MonsterException {}
-class ImageNotCreatedException extends MonsterException {}
-
 /**
  * @param  string $seed any string id like email or openid
  * @param  int    $size Image size (square size x size)
