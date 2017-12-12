@@ -32,8 +32,6 @@ or run `composer require 'sandfoxme/monsterid:^1.1'`.
 
 ## Usage
 
-Just use ```build_monster(id, size)``` from the ```SandFoxMe\MonsterID``` namespace
-
 ```php
 <?php
 
