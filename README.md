@@ -6,6 +6,7 @@
 [![Code Climate](https://img.shields.io/codeclimate/coverage/github/sandfoxme/monsterid.svg?maxAge=2592000)](https://codeclimate.com/github/sandfoxme/monsterid/coverage)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/sandfoxme/monsterid.svg?maxAge=2592000)](https://codeclimate.com/github/sandfoxme/monsterid)
 
+![Monster Example](docs/example.png)
 
 monsterid was inspired by a post by 
 [Don Park](http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification) 
