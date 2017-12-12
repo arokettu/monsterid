@@ -5,6 +5,7 @@ namespace SandFoxMe\MonsterID;
 class Monster
 {
     private $seed;
+    private $monster;
 
     private static $partsPath;
 
@@ -25,37 +26,48 @@ class Monster
         }
     }
 
+    public function __destruct()
+    {
+        if ($this->monster) {
+            imagedestroy($this->monster);
+        }
+    }
+
     public function build($size = null)
     {
-        $this->initRandom();
+        try {
+            $this->initRandom();
+            $this->createImage();
 
-        $parts      = $this->generateRandomParts();
-        $monster    = $this->createImage();
+            $parts = $this->generateRandomParts();
 
-        // add parts
-        foreach ($parts as $part => $number) {
-            $this->applyPartToImage($monster, $part, $number);
+            // add parts
+            foreach ($parts as $part => $number) {
+                $this->applyPartToImage($part, $number);
+            }
+
+            $this->restoreRandom();
+
+            return $this->prepareOutput($size);
+        } finally {
+            if ($this->monster) {
+                imagedestroy($this->monster);
+            }
         }
-
-        $this->restoreRandom();
-
-        return $this->prepareOutput($monster, $size);
     }
 
     private function createImage()
     {
         // create background
-        $monster = imagecreatetruecolor(120, 120);
-        if (!$monster) {
+        $this->monster = imagecreatetruecolor(120, 120);
+        if (!$this->monster) {
             throw new ImageNotCreatedException('GD image create failed');
         }
-        $white = imagecolorallocate($monster, 255, 255, 255);
-        imagefill($monster, 0, 0, $white);
-
-        return $monster;
+        $white = imagecolorallocate($this->monster, 255, 255, 255);
+        imagefill($this->monster, 0, 0, $white);
     }
 
-    private function applyPartToImage($image, $part, $number)
+    private function applyPartToImage($part, $number)
     {
         $file = implode(DIRECTORY_SEPARATOR, array(self::getPartsPath(), "{$part}_{$number}.png"));
 
@@ -64,17 +76,17 @@ class Monster
             throw new PartNotLoadedException('Failed to load ' . $file);
         }
         imagesavealpha($partImage, true);
-        imagecopy($image, $partImage, 0, 0, 0, 0, 120, 120);
+        imagecopy($this->monster, $partImage, 0, 0, 0, 0, 120, 120);
         imagedestroy($partImage);
 
         // color the body
         if ($part == 'body') {
-            $color = imagecolorallocate($image, rand(20, 235), rand(20, 235), rand(20, 235));
-            imagefill($image, 60, 60, $color);
+            $color = imagecolorallocate($this->monster, rand(20, 235), rand(20, 235), rand(20, 235));
+            imagefill($this->monster, 60, 60, $color);
         }
     }
 
-    private function prepareOutput($image, $size)
+    private function prepareOutput($size)
     {
         // resize if needed, then output
         if ($size && $size < 400) {
@@ -82,12 +94,14 @@ class Monster
             if (!$out) {
                 throw new ImageNotCreatedException('GD image create failed');
             }
-            imagecopyresampled($out, $image, 0, 0, 0, 0, $size, $size, 120, 120);
+            imagecopyresampled($out, $this->monster, 0, 0, 0, 0, $size, $size, 120, 120);
 
-            imagedestroy($image);
+            imagedestroy($this->monster);
         } else {
-            $out = $image;
+            $out = $this->monster;
         }
+
+        $this->monster = null; // monster is either destroyed or moved to $out
 
         ob_start();
         imagepng($out);
