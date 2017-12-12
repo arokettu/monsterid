@@ -9,11 +9,11 @@ class Monster
 
     private static $partsPath;
 
-    public function __construct($seed)
+    public function __construct($seed = null)
     {
-        $this->seed = null;
+        $this->seed = false;
 
-        if ($seed) {
+        if ($seed !== null) {
             // first index of unpack is 1
             list(/* $_ */, $intSeed) = unpack('l',
                 substr(
