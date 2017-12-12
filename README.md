@@ -23,12 +23,12 @@ Install it with Composer
 ```json
 {
     "require": {
-        "sandfoxme/monsterid": "^1.0"
+        "sandfoxme/monsterid": "^1.1"
     }
 }
 ```
 
-or run `composer require 'sandfoxme/monsterid:^1.0'`.
+or run `composer require 'sandfoxme/monsterid:^1.1'`.
 
 ## Usage
 
@@ -37,14 +37,24 @@ Just use ```build_monster(id, size)``` from the ```SandFoxMe\MonsterID``` namesp
 ```php
 <?php
 
+use \SandFoxMe\MonsterID\Monster;
+
 // use function is available for PHP >= 5.6, call with full namespace in earlier versions
 use function \SandFoxMe\MonsterID\build_monster;
 
-// make me an avatar
+// Use function:
+
 $image = build_monster('sandfox@sandfox.me', 150);
 
 // save it to file
 file_put_contents('avatar.png', $image);
+
+// Use object:
+
+$monster = new Monster('sandfox@sandfox.me');
+
+// save it to file
+file_put_contents('avatar.png', $monster->build(150));
 ```
 
 ## Adaptation
