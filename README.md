@@ -1,5 +1,7 @@
 # MonsterID
 
+[![Packagist](https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?maxAge=2592000)](https://packagist.org/packages/sandfoxme/monsterid)
+[![Packagist](https://img.shields.io/packagist/l/sandfoxme/monsterid.svg?maxAge=2592000)](https://creativecommons.org/licenses/by/2.5/)
 [![Code Climate](https://img.shields.io/codeclimate/maintainability/sandfoxme/monsterid.svg?maxAge=2592000)](https://codeclimate.com/github/sandfoxme/monsterid)
 
 
@@ -12,17 +14,23 @@ under the [Creative Commons Attribution 2.5 License](http://creativecommons.org/
 
 If you use this software and/or graphics please link back to http://www.splitbrain.org/go/monsterid
 
-## Usage
+## Installation
 
 Install it with Composer
 
 ```json
-"require": {
-    "sandfoxme/monsterid": "*"
+{
+    "require": {
+        "sandfoxme/monsterid": "^1.0"
+    }
 }
 ```
 
-and just use ```build_monster(id, size)``` from the ```SandFoxMe\MonsterID``` namespace
+or run `composer require 'sandfoxme/monsterid:^1.0'`.
+
+## Usage
+
+Just use ```build_monster(id, size)``` from the ```SandFoxMe\MonsterID``` namespace
 
 ```php
 <?php
