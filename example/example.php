@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../src/monsterid.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 // use function is available for PHP >= 5.6, call with full namespace in earlier versions
 use function \SandFoxMe\MonsterID\build_monster;
