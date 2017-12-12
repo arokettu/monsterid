@@ -2,3 +2,4 @@
 /vendor/
 /example/*.png
 composer.lock
+/reports
