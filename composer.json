@@ -16,7 +16,7 @@
         },
         "files": ["src/bootstrap.php"]
     },
-    "license": "CC-BY-2.5",
+    "license": "MIT",
     "authors": [
         {
             "name": "Andreas Gohr",
