@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+_Apr 9, 2019_
+
+* Changed base namespace to SandFox
+
 ## 1.1.1
 
 _Apr 3, 2018_

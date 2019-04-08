@@ -39,11 +39,11 @@ Install it with Composer
 
    {
        "require": {
-           "sandfoxme/monsterid": "^1.1"
+           "sandfoxme/monsterid": "^1.2"
        }
    }
 
-or run ``composer require 'sandfoxme/monsterid:^1.1'``.
+or run ``composer require 'sandfoxme/monsterid:^1.2'``.
 
 Usage
 -----
@@ -52,10 +52,10 @@ Usage
 
    <?php
 
-   use \SandFoxMe\MonsterID\Monster;
+   use \SandFox\MonsterID\Monster;
 
    // use function is available for PHP >= 5.6, call with full namespace in earlier versions
-   use function \SandFoxMe\MonsterID\build_monster;
+   use function \SandFox\MonsterID\build_monster;
 
    // Use function:
 
@@ -81,4 +81,3 @@ Adaptation as a composer library performed by `Anton "Sand Fox" Smirnov <SandFox
 .. _Andreas Gohr:           http://www.splitbrain.org
 .. _MIT License:            https://opensource.org/licenses/MIT
 .. _SandFox:                https://sandfox.me/
-
