@@ -14,7 +14,10 @@
         "psr-4": {
             "SandFox\\MonsterID\\": "src/classes"
         },
-        "files": ["src/bootstrap.php"]
+        "files": [
+            "src/bootstrap.php",
+            "legacy.php"
+        ]
     },
     "license": "MIT",
     "authors": [
