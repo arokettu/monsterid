@@ -17,7 +17,9 @@ MonsterID
    :target: https://codeclimate.com/github/sandfoxme/monsterid
    :alt:    Code Climate
 
-MonsterID is a method to generate a unique monster image based upon a certain identifier (IP address, email address, whatever). It can be used to automatically provide personal avatar images in blog comments or other community services.
+MonsterID is a method to generate a unique monster image based upon a certain identifier
+(IP address, email address, whatever).
+It can be used to automatically provide personal avatar images in blog comments or other community services.
 
 |Monster Example|
 
@@ -25,7 +27,8 @@ MonsterID is a method to generate a unique monster image based upon a certain id
 
 MonsterID was inspired by a post by `Don Park`_ and the `Combinatoric Critters`_.
 
-All graphics were created by `Andreas Gohr`_. The source code and the graphics are provided under the `MIT License`_.
+All graphics were created by `Andreas Gohr`_.
+The source code and the graphics are provided under the `MIT License`_.
 
 Installation
 ------------
