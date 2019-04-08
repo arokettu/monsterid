@@ -1,6 +1,6 @@
 <?php
 
-namespace SandFoxMe\MonsterID;
+namespace SandFox\MonsterID;
 
 class Monster
 {

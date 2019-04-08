@@ -1,6 +1,6 @@
 <?php
 
-namespace SandFoxMe\MonsterID;
+namespace SandFox\MonsterID;
 
 /**
  * @param  string $seed any string id like email or openid

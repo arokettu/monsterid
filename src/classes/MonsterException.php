@@ -1,5 +1,5 @@
 <?php
 
-namespace SandFoxMe\MonsterID;
+namespace SandFox\MonsterID;
 
 class MonsterException extends \RuntimeException {}
