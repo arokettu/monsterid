@@ -33,7 +33,7 @@ Function-style
    <?php
 
    // use function is available for PHP >= 5.6, call with full namespace in earlier versions
-   use function \SandFox\MonsterID\build_monster;
+   use function SandFox\MonsterID\build_monster;
 
    $image = build_monster('sandfox@sandfox.me', 150);
 
@@ -47,7 +47,7 @@ Object-style
 
    <?php
 
-   use \SandFox\MonsterID\Monster;
+   use SandFox\MonsterID\Monster;
 
    $monster = new Monster('sandfox@sandfox.me');
 

@@ -21,14 +21,16 @@ The source code and the graphics are provided under the [MIT License].
 
 Install it with Composer
 
-``composer require 'sandfoxme/monsterid:^1.2'``.
+```bash
+composer require 'sandfoxme/monsterid:^1.2'
+```
 
 ## Usage
 
 ```php
 <?php
 
-use function \SandFox\MonsterID\build_monster;
+use function SandFox\MonsterID\build_monster;
 
 header('Content-type: image/png');
 echo build_monster('sandfox@sandfox.me', 150);
