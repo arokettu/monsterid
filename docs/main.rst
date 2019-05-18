@@ -18,7 +18,9 @@ Installation
 
 Install it with Composer
 
-``composer require 'sandfoxme/monsterid:^1.2'``.
+.. code:: bash
+
+   composer require 'sandfoxme/monsterid:^1.2'
 
 Usage
 =====
