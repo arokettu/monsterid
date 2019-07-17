@@ -36,7 +36,7 @@ header('Content-type: image/png');
 echo build_monster('sandfox@sandfox.me', 150);
 ```
 
-Read full documentation here: <https://sandfox.dev/monsterid.html>
+Read full documentation here: <https://sandfox.dev/php/monsterid.html>
 
 ## Adaptation
 
