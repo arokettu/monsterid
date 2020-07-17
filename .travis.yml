@@ -9,11 +9,9 @@ jobs:
       php:  '7.3'
     - dist: xenial
       php:  '7.4'
+  allow_failures:
     - dist: xenial
       php:  nightly
-matrix:  
-  allow_failures:
-    - php: nightly  
 cache:
   directories:
     - $HOME/.composer/cache/files
