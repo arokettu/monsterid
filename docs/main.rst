@@ -1,7 +1,7 @@
 MonsterID
 #########
 
-|Packagist| |GitHub| |Gitlab| |Bitbucket|
+|Packagist| |GitLab| |GitHub| |Bitbucket| |Gitea|
 
 MonsterID is a method to generate a unique monster image based upon a certain identifier
 (IP address, email address, whatever).
@@ -74,10 +74,12 @@ was performed by `Anton "Sand Fox" Smirnov <SandFox_>`_
 .. _SandFox:                https://sandfox.me/
 
 .. |Packagist|  image:: https://img.shields.io/packagist/v/sandfoxme/monsterid.svg
-   :target: https://packagist.org/packages/sandfoxme/monsterid
-.. |GitHub|     image:: https://img.shields.io/badge/GitHub-monsterid-informational.svg?logo=github
-   :target: https://github.com/sandfoxme/monsterid
-.. |Gitlab|     image:: https://img.shields.io/badge/Gitlab-monsterid-informational.svg?logo=gitlab
-   :target: https://gitlab.com/sandfox/monsterid
-.. |Bitbucket|  image:: https://img.shields.io/badge/Bitbucket-monsterid-informational.svg?logo=bitbucket
-   :target: https://bitbucket.org/sandfox/monsterid
+   :target:     https://packagist.org/packages/sandfoxme/monsterid
+.. |GitHub|     image:: https://img.shields.io/badge/get%20on-GitHub-informational.svg?logo=github
+   :target:     https://github.com/arokettu/monsterid
+.. |GitLab|     image:: https://img.shields.io/badge/get%20on-GitLab-informational.svg?logo=gitlab
+   :target:     https://gitlab.com/sandfox/monsterid
+.. |Bitbucket|  image:: https://img.shields.io/badge/get%20on-Bitbucket-informational.svg?logo=bitbucket
+   :target:     https://bitbucket.org/sandfox/monsterid
+.. |Gitea|      image:: https://img.shields.io/badge/get%20on-Gitea-informational.svg
+   :target:     https://sandfox.org/sandfox/monsterid
