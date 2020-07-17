@@ -2,9 +2,7 @@
 
 [![Packagist](https://img.shields.io/packagist/v/sandfoxme/monsterid.svg)](https://packagist.org/packages/sandfoxme/monsterid)
 [![license](https://img.shields.io/github/license/sandfoxme/monsterid.svg)](https://opensource.org/licenses/MIT)
-[![Travis](https://img.shields.io/travis/sandfoxme/monsterid.svg)](https://travis-ci.org/sandfoxme/monsterid)
-[![Code Climate Coverage](https://img.shields.io/codeclimate/c/sandfoxme/monsterid.svg)](https://codeclimate.com/github/sandfoxme/monsterid/coverage)
-[![Code Climate](https://img.shields.io/codeclimate/maintainability/sandfoxme/monsterid.svg)](https://codeclimate.com/github/sandfoxme/monsterid)
+[![Travis](https://img.shields.io/travis/arokettu/monsterid.svg)](https://travis-ci.org/arokettu/monsterid)
 
 MonsterID is a method to generate a unique monster image based upon a certain identifier
 (IP address, email address, whatever).
