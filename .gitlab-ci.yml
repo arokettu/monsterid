@@ -16,7 +16,7 @@ cache:
     # install composer
     - php -r "copy('https://composer.github.io/installer.sig', '/tmp/composer.sig');"
     - php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
-    - php -r '$expected = file_get_contents("/tmp/composer.sig"); $actual = hash_file("sha384", "/tmp/composer-setup.php"); exit(intval(!hash_equals($expected, $actual)));'
+    - php -r '$expected = file_get_contents("/tmp/composer.sig"); $actual = hash_file("sha384", "/tmp/composer-setup.php"); exit(abs(strcmp($expected, $actual)));'
     - php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
     - chmod +x /usr/local/bin/composer
     - rm /tmp/composer-setup.php /tmp/composer.sig
