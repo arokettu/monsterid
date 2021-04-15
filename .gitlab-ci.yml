@@ -10,7 +10,7 @@ cache:
 .test:
   before_script:
     # install system packages
-    - apt-get update && apt-get install -y git unzip
+    - apt-get update && apt-get install -y git unzip zlib1g-dev libpng-dev
     # install extensions
     - docker-php-ext-install gd
     # install composer
