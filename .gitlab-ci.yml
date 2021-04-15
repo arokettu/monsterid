@@ -1,0 +1,58 @@
+stages:
+  - test
+  - report
+
+cache:
+  key: composer-cache
+  paths:
+    - .composer-cache/
+
+.test:
+  before_script:
+    # install system packages
+    - apt-get update && apt-get install -y git unzip
+    # install extensions
+    - docker-php-ext-install gd
+    # install composer
+    - php -r "copy('https://composer.github.io/installer.sig', '/tmp/composer.sig');"
+    - php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
+    - php -r '$expected = file_get_contents("/tmp/composer.sig"); $actual = hash_file("sha384", "/tmp/composer-setup.php"); exit(intval(!hash_equals($expected, $actual)));'
+    - php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+    - chmod +x /usr/local/bin/composer
+    - rm /tmp/composer-setup.php /tmp/composer.sig
+    # cache dependencies
+    - composer config -g cache-dir "$(pwd)/.composer-cache"
+  script:
+    - composer update
+    - vendor/bin/phpunit
+
+# lowest version
+test-5.5:
+  extends: .test
+  stage: test
+  image: php:5.5
+
+# latest 5
+test-5:
+  extends: .test
+  stage: test
+  image: php:5
+
+# latest 7
+test-7:
+  extends: .test
+  stage: test
+  image: php:7
+
+# latest 8
+test-8:
+  extends: .test
+  stage: test
+  image: php:8
+
+# latest unstable
+test-rc:
+  extends: .test
+  stage: test
+  image: php:rc
+  allow_failure: true
