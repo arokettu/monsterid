@@ -27,16 +27,10 @@ cache:
     - vendor/bin/phpunit
 
 # lowest version
-test-5.5:
+test-7.1:
   extends: .test
   stage: test
-  image: php:5.5
-
-# latest 5
-test-5:
-  extends: .test
-  stage: test
-  image: php:5
+  image: php:7.1
 
 # latest 7
 test-7:

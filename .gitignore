@@ -3,3 +3,4 @@
 /example/*.png
 composer.lock
 /reports
+/.phpunit.result.cache
