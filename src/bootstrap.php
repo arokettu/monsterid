@@ -22,12 +22,13 @@ function build_monster(?string $seed = null, int $size = MONSTER_DEFAULT_SIZE): 
  * @param resource $stream Stream resource, PNG will be written there
  * @param string|null $seed Any string id like email or openid
  * @param int $size Image size (square size x size)
+ * @return resource The same stream as $stream
  */
-function stream_monster($stream, ?string $seed = null, int $size = MONSTER_DEFAULT_SIZE): void
+function stream_monster($stream, ?string $seed = null, int $size = MONSTER_DEFAULT_SIZE)
 {
     $monster = new Monster($seed, $size);
 
-    $monster->writeToStream($stream);
+    return $monster->writeToStream($stream);
 }
 
 /**

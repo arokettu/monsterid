@@ -64,14 +64,17 @@ final class Monster
 
     /**
      * @param resource $stream write png image to string
+     * @return resource the same resource
      */
-    public function writeToStream($stream): void
+    public function writeToStream($stream)
     {
         if ($this->monster === null) {
             $this->build();
         }
 
         imagepng($this->monster, $stream);
+
+        return $stream;
     }
 
     /**
@@ -82,8 +85,10 @@ final class Monster
         $stream = fopen('php://temp', 'r+');
         $this->writeToStream($stream);
         rewind($stream);
+        $image = stream_get_contents($stream);
+        fclose($stream);
 
-        return stream_get_contents($stream);
+        return $image;
     }
 
     private function build(): void
