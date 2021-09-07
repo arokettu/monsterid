@@ -33,6 +33,8 @@
 * Relicensed to MIT to sync with upstream [[Github#1]]
 * Shrinked zip package a bit by adding some development files to .gitattributes
 
+[Github#1]: https://github.com/sandfoxme/monsterid/issues/1
+
 ## 1.1.0
 
 *Dec 12, 2017*
@@ -66,5 +68,3 @@ Main differences from vanilla MonsterID:
 - function returns png image file content, not sends it to the user
 - function is namespaced
 - die()'s replaced with exceptions
-
-[Github#1]: https://github.com/sandfoxme/monsterid/issues/1
