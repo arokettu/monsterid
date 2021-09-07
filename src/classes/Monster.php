@@ -4,7 +4,6 @@ namespace SandFox\MonsterID;
 
 final class Monster
 {
-    private const DEFAULT_SIZE = 120;
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
 
     /** @var int */
@@ -15,7 +14,7 @@ final class Monster
     /** @var resource|\GdImage|null */
     private $monster = null;
 
-    public function __construct(?string $seed = null, ?int $size = null)
+    public function __construct(?string $seed = null, int $size = MONSTER_DEFAULT_SIZE)
     {
         if ($seed === null) {
             $this->seed = random_int(0, 2 ** 24); // get something random
@@ -32,7 +31,7 @@ final class Monster
             $this->seed = $intSeed;
         }
 
-        $this->size = $size ?? self::DEFAULT_SIZE;
+        $this->size = $size;
 
         if ($this->size < 1) {
             throw new \InvalidArgumentException('$size must be 1 or more');
@@ -78,7 +77,7 @@ final class Monster
      */
     public function getImage(): string
     {
-        $stream = fopen('php://memory','r+');
+        $stream = fopen('php://temp','r+');
         $this->writeToStream($stream);
         rewind($stream);
 
@@ -106,7 +105,7 @@ final class Monster
     private function createImage()
     {
         // create background
-        $monster = imagecreatetruecolor(120, 120);
+        $monster = imagecreatetruecolor(MONSTER_DEFAULT_SIZE, MONSTER_DEFAULT_SIZE);
         if (!$monster) {
             throw new ImageNotCreatedException('GD image create failed'); // @codeCoverageIgnore
         }
@@ -131,7 +130,7 @@ final class Monster
             throw new PartNotLoadedException('Failed to load ' . $file); // @codeCoverageIgnore
         }
         imagesavealpha($partImage, true);
-        imagecopy($monster, $partImage, 0, 0, 0, 0, 120, 120);
+        imagecopy($monster, $partImage, 0, 0, 0, 0, MONSTER_DEFAULT_SIZE, MONSTER_DEFAULT_SIZE);
         imagedestroy($partImage);
 
         // color the body
@@ -142,7 +141,7 @@ final class Monster
                 $randomizer->rand(20, 235),
                 $randomizer->rand(20, 235)
             );
-            imagefill($monster, 60, 60, $color);
+            imagefill($monster, MONSTER_DEFAULT_SIZE / 2, MONSTER_DEFAULT_SIZE / 2, $color);
         }
     }
 
@@ -153,7 +152,7 @@ final class Monster
     private function prepareOutput($monster)
     {
         // resize if needed, then output
-        if ($this->size === self::DEFAULT_SIZE) {
+        if ($this->size === MONSTER_DEFAULT_SIZE) {
             return $monster;
         } else {
             $out = imagecreatetruecolor($this->size, $this->size);
