@@ -61,10 +61,11 @@ Export GD object:
 
     use function SandFox\MonsterID\build_monster_gd;
 
-    // save it to a different format for example
-    $gd = build_monster_gd('email@example.com', 150);
+    // convert it to a different format for example
+    $gd = build_monster_gd('email@example.com', 150); // a copy of the internal gd object
     header('Content-type: image/avif');
     imageavif($gd);
+    imagedestroy($gd); // it's your responsibility to destroy the resource (PHP <= 8.0)
 
 Object-style
 ------------
