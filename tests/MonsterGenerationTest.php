@@ -126,4 +126,13 @@ class MonsterGenerationTest extends TestCase
         $monster2 = (new Monster('test@example.com', 240))->build(240);
         self::assertEquals($this->getImageFile('test@example.com', 240), $monster2);
     }
+
+    public function testSerialization(): void
+    {
+        $monster = new Monster('test@example.com', 60);
+        $monster->getImage(); // create resource (non-serializable)
+
+        $monsterImage = unserialize(serialize($monster))->getImage();
+        self::assertEquals($this->getImageFile('test@example.com', 60), $monsterImage);
+    }
 }

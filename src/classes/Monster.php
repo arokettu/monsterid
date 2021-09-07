@@ -207,4 +207,9 @@ final class Monster
             'mouth' =>  $randomizer->rand(1, 10),
         ];
     }
+
+    public function __sleep(): array
+    {
+        return ['seed', 'size'];
+    }
 }
