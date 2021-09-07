@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SandFox\MonsterID;
 
 const MONSTER_DEFAULT_SIZE = 120; // same as image parts size

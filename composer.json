@@ -17,6 +17,10 @@
             "role": "maintainer"
         }
     ],
+    "support": {
+        "issues": "https://gitlab.com/sandfox/monsterid/-/issues",
+        "source": "https://gitlab.com/sandfox/monsterid"
+    },
     "config": {
         "sort-packages": true
     },
@@ -38,6 +42,12 @@
         "ext-gd": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": ">= 7.0 < 10"
+        "dealerdirect/phpcodesniffer-composer-installer": "*",
+        "phpcompatibility/php-compatibility": "*",
+        "phpunit/phpunit": ">= 7.0 < 10",
+        "psy/psysh": "*",
+        "slevomat/coding-standard": "*",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "^4.10"
     }
 }

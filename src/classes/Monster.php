@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace SandFox\MonsterID;
 
 final class Monster
@@ -77,7 +79,7 @@ final class Monster
      */
     public function getImage(): string
     {
-        $stream = fopen('php://temp','r+');
+        $stream = fopen('php://temp', 'r+');
         $this->writeToStream($stream);
         rewind($stream);
 
@@ -165,6 +167,10 @@ final class Monster
         }
     }
 
+    /**
+     * @param Randomizer $randomizer
+     * @return array<string, int>
+     */
     private function generateRandomParts(Randomizer $randomizer): array
     {
         // throw the dice for body parts
