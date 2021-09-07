@@ -20,7 +20,7 @@ Install it with Composer
 
 .. code:: bash
 
-   composer require 'sandfoxme/monsterid:^1.2'
+   composer require sandfoxme/monsterid
 
 Usage
 =====
@@ -28,35 +28,86 @@ Usage
 Function-style
 --------------
 
-.. code:: php
+Get PNG as a string:
 
-   <?php
+.. code-block:: php
 
-   // use function is available for PHP >= 5.6, call with full namespace in earlier versions
-   use function SandFox\MonsterID\build_monster;
+    <?php
 
-   $image = build_monster('sandfox@sandfox.me', 150);
+    use function SandFox\MonsterID\build_monster;
 
-   // save it to file
-   file_put_contents('avatar.png', $image);
+    // output to browser
+    header('Content-type: image/png');
+    echo build_monster('email@example.com', 150);
+
+Put PNG to a stream:
+
+.. code-block:: php
+
+    <?php
+
+    use function SandFox\MonsterID\stream_monster;
+
+    // save to file
+    $stream = fopen('avatar.png', 'w');
+    stream_monster($stream, 'email@example.com', 150);
+    fclose($stream);
+
+Export GD object:
+
+.. code-block:: php
+
+    <?php
+
+    use function SandFox\MonsterID\build_monster_gd;
+
+    // save it to a different format for example
+    $gd = build_monster_gd('email@example.com', 150);
+    header('Content-type: image/avif');
+    imageavif($gd);
 
 Object-style
 ------------
 
-.. code:: php
+.. code-block:: php
 
-   <?php
+    <?php
 
-   use SandFox\MonsterID\Monster;
+    use SandFox\MonsterID\Monster;
 
-   $monster = new Monster('sandfox@sandfox.me');
+    $monster = new Monster('email@example.com', 150);
 
-   // save it to file
-   file_put_contents('avatar.png', $monster->build(150));
+    // output it to browser
+    header('Content-type: image/png');
+    echo $monster->getImage();
 
-   // or output it to browser
-   header('Content-type: image/png');
-   echo build_monster('sandfox@sandfox.me', $monster->build(150));
+    // save it to file
+    $monster->writeToStream(fopen('avatar.png', 'w'));
+
+    // gd
+    header('Content-type: image/avif');
+    imageavif($monster->getGdImage());
+
+Upgrade from 1.x
+================
+
+* Expect different images to be generated
+* Namespace ``SandFoxMe\MonsterID`` is removed, use ``SandFox\MonsterID``
+* Object style changes
+
+    .. code-block:: php
+
+        <?php
+
+        use SandFox\MonsterID\Monster;
+
+        // 1.x
+        (new Monster('email@example.com'))->build(150);
+        // 2.x
+        (new Monster('email@example.com', 150))->getImage();
+
+    * Size parameter moved to the constructor
+    * ``build()`` is now ``getImage()``
 
 License
 =======
