@@ -1,12 +1,24 @@
 # Changelog
 
+## 2.0.0
+
+*Sep 7, 2021*
+
+* PHP version bumped to 7.1
+* New randomization algorithm that does not use `rand()` / `srand()` functions and does not alter global random state.
+  This algorithm will generate images that are different from 1.x results
+* Monster object is now immutable and serializable
+* New functions: `stream_monster()` and `build_monster_gd()`
+* New object methods: `getImage`, `writeToStream()`, `getGdImage()`
+* `build()` now triggers deprecation warning
+
 ## 1.3.0
 
 *Sep 7, 2021*
 
 * Added default `$size` to the constructor for forward compatibility with 2.0
 * Added `getImage()` method for forward compatibility with 2.0
-* Deprecated `build()` method. It will be removed in 2.0
+* Deprecated `build()` method. It will be removed in ~~2.0~~ 3.0
 
 ## 1.2.0
 
