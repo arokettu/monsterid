@@ -39,7 +39,8 @@
     },
     "require": {
         "php": "^7.1 || ^8.0",
-        "ext-gd": "*"
+        "ext-gd": "*",
+        "symfony/deprecation-contracts": "^2.1"
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "*",

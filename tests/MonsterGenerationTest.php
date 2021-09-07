@@ -108,4 +108,13 @@ class MonsterGenerationTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         build_monster('test', -100);
     }
+
+    public function testDeprecatedMethods(): void
+    {
+        $monster1 = (new Monster('test@example.com'))->build(240);
+        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-240.png'), $monster1);
+
+        $monster2 = (new Monster('test@example.com', 240))->build(240);
+        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-240.png'), $monster2);
+    }
 }

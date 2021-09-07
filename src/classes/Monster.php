@@ -53,7 +53,7 @@ final class Monster
     public function getGdImage()
     {
         if ($this->monster === null) {
-            $this->build();
+            $this->buildImage();
         }
 
         $newmonster = imagecreatetruecolor($this->size, $this->size);
@@ -69,7 +69,7 @@ final class Monster
     public function writeToStream($stream)
     {
         if ($this->monster === null) {
-            $this->build();
+            $this->buildImage();
         }
 
         imagepng($this->monster, $stream);
@@ -91,7 +91,26 @@ final class Monster
         return $image;
     }
 
-    private function build(): void
+    /**
+     * @deprecated use getImage()
+     * @param int $size
+     * @return string
+     */
+    public function build(int $size = MONSTER_DEFAULT_SIZE): string
+    {
+        trigger_deprecation('sandfoxme/monsterid', '2.0', 'Deprecated in favor of getImage()');
+
+        if ($size === $this->size) {
+            return $this->getImage();
+        }
+
+        $monster = new Monster('', $size);
+        $monster->seed = $this->seed; // overwrite seed
+
+        return $monster->getImage();
+    }
+
+    private function buildImage(): void
     {
         $randomizer = new Randomizer($this->seed);
 
