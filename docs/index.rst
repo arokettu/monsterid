@@ -56,7 +56,24 @@ Object-style
 
    // or output it to browser
    header('Content-type: image/png');
-   echo build_monster('sandfox@sandfox.me', $monster->build(150));
+   echo $monster->build(150);
+
+From 1.3: added forward compatibility with 2.0
+
+.. code:: php
+
+    <?php
+
+    use SandFox\MonsterID\Monster;
+
+    $monster = new Monster('sandfox@sandfox.me', 150);
+
+    // save it to file
+    file_put_contents('avatar.png', $monster->getImage());
+
+    // or output it to browser
+    header('Content-type: image/png');
+    echo $monster->getImage();
 
 License
 =======

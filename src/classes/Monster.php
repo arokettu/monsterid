@@ -6,10 +6,11 @@ class Monster
 {
     private $seed;
     private $monster;
+    private $size;
 
     private static $partsPath;
 
-    public function __construct($seed = null)
+    public function __construct($seed = null, $size = null)
     {
         $this->seed = false;
 
@@ -24,6 +25,8 @@ class Monster
 
             $this->seed = $intSeed;
         }
+
+        $this->size = $size;
     }
 
     public function __destruct()
@@ -33,6 +36,14 @@ class Monster
         }
     }
 
+    public function getImage()
+    {
+        return $this->build();
+    }
+
+    /**
+     * @deprecated Forward compatibility with 2.0: use getImage()
+     */
     public function build($size = null)
     {
         try {
@@ -48,7 +59,7 @@ class Monster
 
             $this->restoreRandom();
 
-            return $this->prepareOutput($size);
+            return $this->prepareOutput($size ?: $this->size);
         } finally {
             if ($this->monster) {
                 imagedestroy($this->monster);
