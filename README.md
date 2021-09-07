@@ -20,7 +20,7 @@ The source code and the graphics are provided under the [MIT License].
 Install it with Composer
 
 ```bash
-composer require 'sandfoxme/monsterid:^1.2'
+composer require sandfoxme/monsterid
 ```
 
 ## Usage
@@ -35,6 +35,8 @@ echo build_monster('sandfox@sandfox.me', 150);
 ```
 
 Read full documentation here: <https://sandfox.dev/php/monsterid.html>
+
+Also on Read the Docs: <https://monsterid.readthedocs.io/>
 
 ## Adaptation
 

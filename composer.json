@@ -19,7 +19,8 @@
     ],
     "support": {
         "issues": "https://gitlab.com/sandfox/monsterid/-/issues",
-        "source": "https://gitlab.com/sandfox/monsterid"
+        "source": "https://gitlab.com/sandfox/monsterid",
+        "docs": "https://monsterid.readthedocs.io/"
     },
     "config": {
         "sort-packages": true
