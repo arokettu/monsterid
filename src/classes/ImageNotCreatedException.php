@@ -2,4 +2,4 @@
 
 namespace SandFox\MonsterID;
 
-class ImageNotCreatedException extends MonsterException {}
+final class ImageNotCreatedException extends MonsterException {}

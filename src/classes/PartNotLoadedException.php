@@ -2,4 +2,4 @@
 
 namespace SandFox\MonsterID;
 
-class PartNotLoadedException extends MonsterException {}
+final class PartNotLoadedException extends MonsterException {}

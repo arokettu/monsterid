@@ -2,4 +2,4 @@
 
 namespace SandFox\MonsterID;
 
-class MonsterException extends \RuntimeException {}
+abstract class MonsterException extends \RuntimeException {}

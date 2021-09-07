@@ -2,27 +2,40 @@
 
 namespace SandFox\MonsterID;
 
-class Monster
+final class Monster
 {
+    private const DEFAULT_SIZE = 120;
+    private const PARTS_PATH = __DIR__ . '/../../assets/parts';
+
+    /** @var int */
     private $seed;
-    private $monster;
+    /** @var int */
+    private $size;
 
-    private static $partsPath;
+    /** @var resource|\GdImage|null */
+    private $monster = null;
 
-    public function __construct($seed = null)
+    public function __construct(?string $seed = null, ?int $size = null)
     {
-        $this->seed = false;
-
-        if ($seed !== null) {
+        if ($seed === null) {
+            $this->seed = random_int(0, 2 ** 24); // get something random
+        } else {
             // first index of unpack is 1
-            list(/* $_ */, $intSeed) = unpack('l',
-                substr(
-                    md5($seed, true),   // raw md5 hash
-                    0, 4                // 4 bytes
-                )
-            );                          // convert to 32bit signed integer
+            // convert to 32bit signed integer
+            [/* $_ */, $intSeed] = unpack('l', md5($seed, true));
+
+            // make 31 bit positive integer
+            if ($intSeed < 0) {
+                $intSeed = -1 - $intSeed;
+            }
 
             $this->seed = $intSeed;
+        }
+
+        $this->size = $size ?? self::DEFAULT_SIZE;
+
+        if ($this->size < 1) {
+            throw new \InvalidArgumentException('$size must be 1 or more');
         }
     }
 
@@ -33,119 +46,136 @@ class Monster
         }
     }
 
-    public function build($size = null)
+    /**
+     * @return \GdImage|resource
+     */
+    public function getGdImage()
     {
-        try {
-            $this->initRandom();
-            $this->createImage();
-
-            $parts = $this->generateRandomParts();
-
-            // add parts
-            foreach ($parts as $part => $number) {
-                $this->applyPartToImage($part, $number);
-            }
-
-            $this->restoreRandom();
-
-            return $this->prepareOutput($size);
-        } finally {
-            if ($this->monster) {
-                imagedestroy($this->monster);
-            }
+        if ($this->monster === null) {
+            $this->build();
         }
+
+        $newmonster = imagecreatetruecolor($this->size, $this->size);
+        imagecopy($newmonster, $this->monster, 0, 0, 0, 0, $this->size, $this->size);
+
+        return $newmonster;
     }
 
+    /**
+     * @param resource $stream write png image to string
+     */
+    public function writeToStream($stream): void
+    {
+        if ($this->monster === null) {
+            $this->build();
+        }
+
+        imagepng($this->monster, $stream);
+    }
+
+    /**
+     * @return string png image content
+     */
+    public function getImage(): string
+    {
+        $stream = fopen('php://memory','r+');
+        $this->writeToStream($stream);
+        rewind($stream);
+
+        return stream_get_contents($stream);
+    }
+
+    private function build(): void
+    {
+        $randomizer = new Randomizer($this->seed);
+
+        $monster = $this->createImage();
+        $parts = $this->generateRandomParts($randomizer);
+
+        // add parts
+        foreach ($parts as $part => $number) {
+            $this->applyPartToImage($monster, $part, $number, $randomizer);
+        }
+
+        $this->monster = $this->prepareOutput($monster);
+    }
+
+    /**
+     * @return \GdImage|resource
+     */
     private function createImage()
     {
         // create background
-        $this->monster = imagecreatetruecolor(120, 120);
-        if (!$this->monster) {
-            throw new ImageNotCreatedException('GD image create failed');
+        $monster = imagecreatetruecolor(120, 120);
+        if (!$monster) {
+            throw new ImageNotCreatedException('GD image create failed'); // @codeCoverageIgnore
         }
-        $white = imagecolorallocate($this->monster, 255, 255, 255);
-        imagefill($this->monster, 0, 0, $white);
+        $white = imagecolorallocate($monster, 255, 255, 255);
+        imagefill($monster, 0, 0, $white);
+
+        return $monster;
     }
 
-    private function applyPartToImage($part, $number)
+    /**
+     * @param resource|\GdImage $monster
+     * @param string $part
+     * @param int $number
+     * @param Randomizer $randomizer
+     */
+    private function applyPartToImage($monster, string $part, int $number, Randomizer $randomizer): void
     {
-        $file = implode(DIRECTORY_SEPARATOR, array(self::getPartsPath(), "{$part}_{$number}.png"));
+        $file = self::PARTS_PATH . DIRECTORY_SEPARATOR . "{$part}_{$number}.png";
 
         $partImage = imagecreatefrompng($file);
         if (!$partImage) {
-            throw new PartNotLoadedException('Failed to load ' . $file);
+            throw new PartNotLoadedException('Failed to load ' . $file); // @codeCoverageIgnore
         }
         imagesavealpha($partImage, true);
-        imagecopy($this->monster, $partImage, 0, 0, 0, 0, 120, 120);
+        imagecopy($monster, $partImage, 0, 0, 0, 0, 120, 120);
         imagedestroy($partImage);
 
         // color the body
         if ($part == 'body') {
-            $color = imagecolorallocate($this->monster, rand(20, 235), rand(20, 235), rand(20, 235));
-            imagefill($this->monster, 60, 60, $color);
+            $color = imagecolorallocate(
+                $monster,
+                $randomizer->rand(20, 235),
+                $randomizer->rand(20, 235),
+                $randomizer->rand(20, 235)
+            );
+            imagefill($monster, 60, 60, $color);
         }
     }
 
-    private function prepareOutput($size)
+    /**
+     * @param resource|\GdImage $monster
+     * @return resource|\GdImage
+     */
+    private function prepareOutput($monster)
     {
         // resize if needed, then output
-        if ($size && $size < 400) {
-            $out = imagecreatetruecolor($size, $size);
-            if (!$out) {
-                throw new ImageNotCreatedException('GD image create failed');
-            }
-            imagecopyresampled($out, $this->monster, 0, 0, 0, 0, $size, $size, 120, 120);
-
-            imagedestroy($this->monster);
+        if ($this->size === self::DEFAULT_SIZE) {
+            return $monster;
         } else {
-            $out = $this->monster;
-        }
-
-        $this->monster = null; // monster is either destroyed or moved to $out
-
-        ob_start();
-        imagepng($out);
-        $buffer = ob_get_clean();
-        imagedestroy($out);
-
-        return $buffer;
-    }
-
-    private function initRandom()
-    {
-        // init random seed
-        if ($this->seed !== false) {
-            srand($this->seed);
+            $out = imagecreatetruecolor($this->size, $this->size);
+            if (!$out) {
+                throw new ImageNotCreatedException('GD image create failed'); // @codeCoverageIgnore
+            }
+            imagecopyresampled($out, $monster, 0, 0, 0, 0, $this->size, $this->size, 120, 120);
+            imagedestroy($monster);
+            return $out;
         }
     }
 
-    private function restoreRandom()
-    {
-        // restore random seed
-        if ($this->seed !== false) {
-            srand();
-        }
-    }
-
-    private function generateRandomParts()
+    private function generateRandomParts(Randomizer $randomizer): array
     {
         // throw the dice for body parts
-        return array(
-            'legs' =>   rand(1, 5),
-            'hair' =>   rand(1, 5),
-            'arms' =>   rand(1, 5),
-            'body' =>   rand(1, 15),
-            'eyes' =>   rand(1, 15),
-            'mouth' =>  rand(1, 10),
-        );
-    }
-
-    private static function getPartsPath()
-    {
-        if (!self::$partsPath) {
-            self::$partsPath = realpath(__DIR__ . '/../../assets/parts');
-        }
-
-        return self::$partsPath;
+        return [
+            'legs' =>   $randomizer->rand(1, 5),
+            'hair' =>   $randomizer->rand(1, 5),
+            'arms' =>   $randomizer->rand(1, 5),
+            'body' =>   $randomizer->rand(1, 15),
+            'eyes' =>   $randomizer->rand(1, 15),
+            'mouth' =>  $randomizer->rand(1, 10),
+        ];
     }
 }
