@@ -14,6 +14,15 @@ use function SandFox\MonsterID\stream_monster;
 
 class MonsterGenerationTest extends TestCase
 {
+    private function getImageFile(string $seed, int $size): string
+    {
+        // recode png to ignore gd compression difference
+        $image = imagecreatefrompng(__DIR__ . "/data/{$seed}-{$size}.png");
+        ob_start();
+        imagepng($image);
+        return ob_get_clean();
+    }
+
     public function testGenerateForSeed(): void
     {
         $monster1 = build_monster('test@example.com');
@@ -65,22 +74,22 @@ class MonsterGenerationTest extends TestCase
     public function testImageContent(): void
     {
         $monster1 = (new Monster('test@example.com'))->getImage();
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-120.png'), $monster1);
+        self::assertEquals($this->getImageFile('test@example.com', 120), $monster1);
 
         $monster2 = (new Monster('test@example.com', 60))->getImage();
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-60.png'), $monster2);
+        self::assertEquals($this->getImageFile('test@example.com', 60), $monster2);
 
         $monster3 = (new Monster('test@example.com', 240))->getImage();
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-240.png'), $monster3);
+        self::assertEquals($this->getImageFile('test@example.com', 240), $monster3);
     }
 
     public function testSeedEdgeCases(): void
     {
         $negSeedMonster = (new Monster('37854182738c08d1@example.com'))->getImage();
-        self::assertEquals(file_get_contents(__DIR__ . '/data/37854182738c08d1@example.com-120.png'), $negSeedMonster);
+        self::assertEquals($this->getImageFile('37854182738c08d1@example.com', 120), $negSeedMonster);
 
         $posSeedMonster = (new Monster('50e6614de5e62689@example.com'))->getImage();
-        self::assertEquals(file_get_contents(__DIR__ . '/data/50e6614de5e62689@example.com-120.png'), $posSeedMonster);
+        self::assertEquals($this->getImageFile('50e6614de5e62689@example.com', 120), $posSeedMonster);
     }
 
     public function testGdExport(): void
@@ -90,7 +99,7 @@ class MonsterGenerationTest extends TestCase
         imagepng($image);
         $png = ob_get_clean();
 
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-120.png'), $png);
+        self::assertEquals($this->getImageFile('test@example.com', 120), $png);
     }
 
     public function testStreamOutput(): void
@@ -100,7 +109,7 @@ class MonsterGenerationTest extends TestCase
         stream_monster($stream, 'test@example.com');
         rewind($stream);
 
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-120.png'), stream_get_contents($stream));
+        self::assertEquals($this->getImageFile('test@example.com', 120), stream_get_contents($stream));
     }
 
     public function testNoNegativeSizes(): void
@@ -112,9 +121,9 @@ class MonsterGenerationTest extends TestCase
     public function testDeprecatedMethods(): void
     {
         $monster1 = (new Monster('test@example.com'))->build(240);
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-240.png'), $monster1);
+        self::assertEquals($this->getImageFile('test@example.com', 240), $monster1);
 
         $monster2 = (new Monster('test@example.com', 240))->build(240);
-        self::assertEquals(file_get_contents(__DIR__ . '/data/test@example.com-240.png'), $monster2);
+        self::assertEquals($this->getImageFile('test@example.com', 240), $monster2);
     }
 }
