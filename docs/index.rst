@@ -65,7 +65,7 @@ Export GD object:
     $gd = build_monster_gd('email@example.com', 150); // a copy of the internal gd object
     header('Content-type: image/avif');
     imageavif($gd);
-    imagedestroy($gd); // it's your responsibility to destroy the resource (PHP <= 8.0)
+    imagedestroy($gd); // it's your responsibility to destroy the resource (PHP < 8.0)
 
 Object-style
 ------------
@@ -116,14 +116,16 @@ License
 All graphics were created by `Andreas Gohr`_.
 The source code and the graphics are provided under the `MIT License`_.
 
-Adaptation as a composer library for modern PHP
-was performed by `Anton "Sand Fox" Smirnov <SandFox_>`_
+Upgraded and maintained by `Anton "Sand Fox" Smirnov <SandFox_>`_.
+
+Original implementation can be found `here <upstream_>`_.
 
 .. _Don Park:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
 .. _Combinatoric Critters:  http://www.levitated.net/bones/walkingFaces/index.html
 .. _Andreas Gohr:           http://www.splitbrain.org
 .. _MIT License:            https://opensource.org/licenses/MIT
 .. _SandFox:                https://sandfox.me/
+.. _upstream:               https://github.com/splitbrain/monsterID
 
 .. |Packagist|  image:: https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square
    :target:     https://packagist.org/packages/sandfoxme/monsterid

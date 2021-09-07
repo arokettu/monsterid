@@ -12,9 +12,6 @@ It can be used to automatically provide personal avatar images in blog comments 
 
 MonsterID was inspired by a post by [Don Park] and the [Combinatoric Critters].
 
-All graphics were created by [Andreas Gohr].
-The source code and the graphics are provided under the [MIT License].
-
 ## Installation
 
 Install it with Composer
@@ -38,12 +35,18 @@ Read full documentation here: <https://sandfox.dev/php/monsterid.html>
 
 Also on Read the Docs: <https://monsterid.readthedocs.io/>
 
-## Adaptation
+## License
 
-Adaptation as a composer library performed by [Anton "Sand Fox" Smirnov][SandFox]
+All graphics were created by [Andreas Gohr].
+The source code and the graphics are provided under the [MIT License].
 
-[Don Park]:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
-[Combinatoric Critters]:  http://www.levitated.net/bones/walkingFaces/index.html
-[Andreas Gohr]:           http://www.splitbrain.org
-[MIT License]:            https://opensource.org/licenses/MIT
-[SandFox]:                https://sandfox.me/
+Upgraded and maintained by [Anton "Sand Fox" Smirnov][SandFox].
+
+Original implementation can be found [here][upstream].
+
+[Don Park]:                 http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
+[Combinatoric Critters]:    http://www.levitated.net/bones/walkingFaces/index.html
+[Andreas Gohr]:             http://www.splitbrain.org
+[MIT License]:              https://opensource.org/licenses/MIT
+[SandFox]:                  https://sandfox.me/
+[upstream]:                 https://github.com/splitbrain/monsterID

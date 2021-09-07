@@ -64,7 +64,9 @@ replaced one last missed die() with exception
 
 Initial release
 
-Main differences from vanilla MonsterID:
+Main differences from [vanilla MonsterID][upstream]:
 - function returns png image file content, not sends it to the user
 - function is namespaced
 - die()'s replaced with exceptions
+
+[upstream]: https://github.com/splitbrain/monsterID
