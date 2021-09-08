@@ -14,10 +14,10 @@ use function SandFox\MonsterID\stream_monster;
 
 class MonsterGenerationTest extends TestCase
 {
-    private function getImageFile(string $seed, int $size): string
+    private function getImageFile(string $string, int $size): string
     {
         // recode png to ignore gd compression difference
-        $image = imagecreatefrompng(__DIR__ . "/data/{$seed}-{$size}.png");
+        $image = imagecreatefrompng(__DIR__ . "/data/{$string}-{$size}.png");
         ob_start();
         imagepng($image);
         return ob_get_clean();
