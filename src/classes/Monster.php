@@ -16,28 +16,22 @@ final class Monster
     /** @var resource|\GdImage|null */
     private $monster = null;
 
-    public function __construct(?string $seed = null, int $size = MONSTER_DEFAULT_SIZE)
+    public function __construct(?string $string = null, int $size = MONSTER_DEFAULT_SIZE)
     {
-        if ($seed === null) {
-            $this->seed = random_int(0, 2 ** 24); // get something random
-        } else {
-            // first index of unpack is 1
-            // convert to 32bit signed integer
-            [/* $_ */, $intSeed] = unpack('l', md5($seed, true));
-
-            // make 31 bit positive integer
-            if ($intSeed < 0) {
-                $intSeed = -1 - $intSeed;
-            }
-
-            $this->seed = $intSeed;
-        }
-
-        $this->size = $size;
-
-        if ($this->size < 1) {
+        if ($size < 1) {
             throw new \InvalidArgumentException('$size must be 1 or more');
         }
+
+        $binSeed = $string === null ?
+            random_bytes(4) : // get something random if no string
+            md5($string, true);
+
+        // first index of unpack is 1
+        // convert to 32bit signed integer
+        [/* $_ */, $intSeed] = unpack('l', $binSeed);
+
+        $this->seed = $intSeed;
+        $this->size = $size;
     }
 
     public function __destruct()
