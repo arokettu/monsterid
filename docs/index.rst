@@ -20,7 +20,9 @@ Install it with Composer
 
 .. code:: bash
 
-   composer require sandfoxme/monsterid
+   composer require 'sandfoxme/monsterid:^2.1'
+
+.. warning:: Version 2.0.0 uses bad random generation and is therefore not recommended
 
 Usage
 =====

@@ -22,8 +22,10 @@ Install it with Composer
 
 [code,bash]
 ----
-composer require sandfoxme/monsterid
+composer require 'sandfoxme/monsterid:^2.1'
 ----
+
+WARNING: Version 2.0.0 uses bad random generation and is therefore not recommended
 
 == Usage
 
@@ -44,12 +46,12 @@ Also on Read the Docs: <https://monsterid.readthedocs.io/>
 == License
 
 :AndreasGohr:   https://www.splitbrain.org
-:MITLicense:    https://opensource.org/licenses/MIT
+:mit:           https://opensource.org/licenses/MIT
 :SandFox:       https://sandfox.me/
 :upstream:      https://github.com/splitbrain/monsterID
 
 All graphics were created by link:{AndreasGohr}[Andreas Gohr].
-The source code and the graphics are provided under the [MIT License].
+The source code and the graphics are provided under the link:{mit}[MIT License].
 
 Upgraded and maintained by link:{SandFox}[Anton "Sand Fox" Smirnov].
 
