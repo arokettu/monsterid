@@ -13,6 +13,7 @@ cache:
     - apt-get update && apt-get install -y git unzip zlib1g-dev libpng-dev
     # install extensions
     - docker-php-ext-install gd
+    - if [ "$INSTALL_XDEBUG" -eq 1 ]; then curl --location https://github.com/FriendsOfPHP/pickle/releases/latest/download/pickle.phar --output pickle.phar; php pickle.phar install --defaults xdebug; docker-php-ext-enable xdebug; fi
     # install composer
     - php -r "copy('https://composer.github.io/installer.sig', '/tmp/composer.sig');"
     - php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
@@ -25,6 +26,20 @@ cache:
   script:
     - composer update
     - vendor/bin/phpunit
+
+# coverage
+coverage:
+  variables:
+    INSTALL_XDEBUG: 1
+  extends: .test
+  stage: report
+  only:
+    - master
+  image: php:8.0
+  script:
+    - composer update
+    - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover coverage.xml
+    - bash <(curl -s https://codecov.io/bash)
 
 # lowest version
 test-7.1:
