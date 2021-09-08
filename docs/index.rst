@@ -22,7 +22,7 @@ Install it with Composer
 
    composer require 'sandfoxme/monsterid:^2.1'
 
-.. warning:: Version 2.0.0 uses bad random generation and is therefore not recommended
+.. warning:: Version 2.0.0 uses bad random generation and therefore is not recommended
 
 Usage
 =====

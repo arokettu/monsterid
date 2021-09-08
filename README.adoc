@@ -3,8 +3,8 @@
 :DonPark:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
 :CombinatoricCritters:  http://www.levitated.net/bones/walkingFaces/index.html
 
-link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square)[Packagist]]
-link:https://opensource.org/licenses/MIT[image:https://img.shields.io/github/license/sandfoxme/monsterid.svg?style=flat-square)[license]]
+link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square[Packagist]]
+link:https://opensource.org/licenses/MIT[image:https://img.shields.io/github/license/sandfoxme/monsterid.svg?style=flat-square[license]]
 link:https://gitlab.com/sandfox/monsterid/-/pipelines[image:https://img.shields.io/gitlab/pipeline/sandfox/monsterid/master.svg?style=flat-square[Gitlab pipeline status]]
 link:https://codecov.io/gl/sandfox/monsterid/[image:https://img.shields.io/codecov/c/gl/sandfox/monsterid?style=flat-square[Codecov]]
 
@@ -20,16 +20,16 @@ MonsterID was inspired by a post by link:{DonPark}[Don Park] and the link:{Combi
 
 Install it with Composer
 
-[code,bash]
+[source,bash]
 ----
 composer require 'sandfoxme/monsterid:^2.1'
 ----
 
-WARNING: Version 2.0.0 uses bad random generation and is therefore not recommended
+WARNING: Version 2.0.0 uses bad random generation and therefore is not recommended
 
 == Usage
 
-[code,php]
+[source,php]
 ----
 <?php
 
