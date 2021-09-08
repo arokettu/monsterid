@@ -1,8 +1,16 @@
 # Changelog
 
+## 2.1.0
+
+*Sep 8, 2021*
+
+* Fixed random generation
+
 ## 2.0.0
 
 *Sep 7, 2021*
+
+!!! Random generation in this version is terrible, please don't use it
 
 * PHP version bumped to 7.1
 * New randomization algorithm that does not use `rand()` / `srand()` functions and does not alter global random state.
