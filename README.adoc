@@ -1,53 +1,56 @@
-# MonsterID
+= MonsterID
 
-[![Packagist](https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square)](https://packagist.org/packages/sandfoxme/monsterid)
-[![license](https://img.shields.io/github/license/sandfoxme/monsterid.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/sandfox/monsterid/master.svg?style=flat-square)](https://gitlab.com/sandfox/monsterid/-/pipelines)
-[![Codecov](https://img.shields.io/codecov/c/gl/sandfox/monsterid?style=flat-square)](https://codecov.io/gl/sandfox/monsterid/)
+:DonPark:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
+:CombinatoricCritters:  http://www.levitated.net/bones/walkingFaces/index.html
+
+link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square)[Packagist]]
+link:https://opensource.org/licenses/MIT[image:https://img.shields.io/github/license/sandfoxme/monsterid.svg?style=flat-square)[license]]
+link:https://gitlab.com/sandfox/monsterid/-/pipelines[image:https://img.shields.io/gitlab/pipeline/sandfox/monsterid/master.svg?style=flat-square[Gitlab pipeline status]]
+link:https://codecov.io/gl/sandfox/monsterid/[image:https://img.shields.io/codecov/c/gl/sandfox/monsterid?style=flat-square[Codecov]]
 
 MonsterID is a method to generate a unique monster image based upon a certain identifier
 (IP address, email address, whatever).
 It can be used to automatically provide personal avatar images in blog comments or other community services.
 
-![Monster Example](docs/images/example.png)
+image:docs/images/example.png[Monster Example]
 
-MonsterID was inspired by a post by [Don Park] and the [Combinatoric Critters].
+MonsterID was inspired by a post by link:{DonPark}[Don Park] and the link:{CombinatoricCritters}[Combinatoric Critters].
 
-## Installation
+== Installation
 
 Install it with Composer
 
-```bash
+[code,bash]
+----
 composer require sandfoxme/monsterid
-```
+----
 
-## Usage
+== Usage
 
-```php
+[code,php]
+----
 <?php
 
 use function SandFox\MonsterID\build_monster;
 
 header('Content-type: image/png');
 echo build_monster('sandfox@sandfox.me', 150);
-```
+----
 
 Read full documentation here: <https://sandfox.dev/php/monsterid.html>
 
 Also on Read the Docs: <https://monsterid.readthedocs.io/>
 
-## License
+== License
 
-All graphics were created by [Andreas Gohr].
+:AndreasGohr:   https://www.splitbrain.org
+:MITLicense:    https://opensource.org/licenses/MIT
+:SandFox:       https://sandfox.me/
+:upstream:      https://github.com/splitbrain/monsterID
+
+All graphics were created by link:{AndreasGohr}[Andreas Gohr].
 The source code and the graphics are provided under the [MIT License].
 
-Upgraded and maintained by [Anton "Sand Fox" Smirnov][SandFox].
+Upgraded and maintained by link:{SandFox}[Anton "Sand Fox" Smirnov].
 
-Original implementation can be found [here][upstream].
-
-[Don Park]:                 http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
-[Combinatoric Critters]:    http://www.levitated.net/bones/walkingFaces/index.html
-[Andreas Gohr]:             http://www.splitbrain.org
-[MIT License]:              https://opensource.org/licenses/MIT
-[SandFox]:                  https://sandfox.me/
-[upstream]:                 https://github.com/splitbrain/monsterID
+Original implementation can be found link:{upstream}[here].
