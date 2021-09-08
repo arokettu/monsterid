@@ -98,7 +98,7 @@ Upgrade from 1.x
 * Namespace ``SandFoxMe\MonsterID`` is removed, use ``SandFox\MonsterID``
 * Object style changes
 
-    .. code-block:: php
+  .. code-block:: php
 
         <?php
 
@@ -109,8 +109,8 @@ Upgrade from 1.x
         // 2.x
         (new Monster('email@example.com', 150))->getImage();
 
-    * Size parameter moved to the constructor
-    * ``build()`` is now ``getImage()``
+  * Size parameter moved to the constructor
+  * ``build()`` is now ``getImage()``
 
 License
 =======
