@@ -44,11 +44,9 @@
         "symfony/deprecation-contracts": "^2.1"
     },
     "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "*",
-        "phpcompatibility/php-compatibility": "*",
         "phpunit/phpunit": ">= 7.0 < 10",
         "psy/psysh": "*",
-        "slevomat/coding-standard": "*",
+        "sandfox.dev/code-standard": "7.1.*@dev",
         "squizlabs/php_codesniffer": "*",
         "vimeo/psalm": "^4.10"
     }
