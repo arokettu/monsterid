@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID;
 
+use function Arokettu\IsResource\try_get_resource_type;
+
 final class Monster
 {
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
@@ -62,6 +64,10 @@ final class Monster
      */
     public function writeToStream($stream)
     {
+        if (try_get_resource_type($stream) !== 'stream') {
+            throw new \InvalidArgumentException('$stream should be a readable stream');
+        }
+
         if ($this->monster === null) {
             $this->buildImage();
         }

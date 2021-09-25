@@ -41,6 +41,7 @@
     "require": {
         "php": "^7.1 || ^8.0",
         "ext-gd": "*",
+        "arokettu/is-resource": "^1.0",
         "symfony/deprecation-contracts": "^2.1"
     },
     "require-dev": {
