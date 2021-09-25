@@ -114,6 +114,12 @@ class MonsterGenerationTest extends TestCase
         self::assertEquals($this->getImageFile('test@example.com', 120), stream_get_contents($stream));
     }
 
+    public function testInvalidStream(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        stream_monster('not a stream');
+    }
+
     public function testNoNegativeSizes(): void
     {
         $this->expectException(InvalidArgumentException::class);
