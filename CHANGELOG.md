@@ -4,7 +4,7 @@
 
 *Sep 25, 2021*
 
-The resource type is now properly checked before writing to it
+* The resource type is now properly checked before writing to it
 
 ## 2.1.0
 
