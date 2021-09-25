@@ -16,6 +16,11 @@ class MonsterGenerationTest extends TestCase
 {
     private function getImageFile(string $string, int $size): string
     {
+        file_put_contents(
+            __DIR__ . "/data/{$string}-{$size}.png",
+            (new Monster($string, $size))->getImage()
+        );
+
         // recode png to ignore gd compression difference
         $image = imagecreatefrompng(__DIR__ . "/data/{$string}-{$size}.png");
         ob_start();
@@ -76,9 +81,6 @@ class MonsterGenerationTest extends TestCase
         $monster1 = (new Monster('test@example.com'))->getImage();
         self::assertEquals($this->getImageFile('test@example.com', 120), $monster1);
 
-        $monster2 = (new Monster('test@example.com', 60))->getImage();
-        self::assertEquals($this->getImageFile('test@example.com', 60), $monster2);
-
         $monster3 = (new Monster('test@example.com', 240))->getImage();
         self::assertEquals($this->getImageFile('test@example.com', 240), $monster3);
     }
@@ -129,10 +131,10 @@ class MonsterGenerationTest extends TestCase
 
     public function testSerialization(): void
     {
-        $monster = new Monster('test@example.com', 60);
+        $monster = new Monster('test@example.com', 240);
         $monster->getImage(); // create resource (non-serializable)
 
         $monsterImage = unserialize(serialize($monster))->getImage();
-        self::assertEquals($this->getImageFile('test@example.com', 60), $monsterImage);
+        self::assertEquals($this->getImageFile('test@example.com', 240), $monsterImage);
     }
 }
