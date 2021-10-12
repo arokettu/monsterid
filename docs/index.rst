@@ -55,6 +55,13 @@ Put PNG to a stream:
     stream_monster($stream, 'email@example.com', 150);
     fclose($stream);
 
+    // more efficient output to browser
+    $stream = fopen('php://temp', 'r+');
+    stream_monster($stream, 'email@example.com', 150);
+    rewind($stream);
+    fpassthru($stream);
+    fclose($stream);
+
 Export GD object:
 
 .. code-block:: php
