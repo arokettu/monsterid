@@ -58,10 +58,3 @@ test-8:
   extends: .test
   stage: test
   image: php:8
-
-# latest unstable
-test-rc:
-  extends: .test
-  stage: test
-  image: php:rc
-  allow_failure: true
