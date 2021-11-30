@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.1.2
+
+*Nov 30, 2021*
+
+* Allow symfony/contracts v3
+
 ## 2.1.1
 
 *Sep 25, 2021*

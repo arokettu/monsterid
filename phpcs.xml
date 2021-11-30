@@ -3,8 +3,7 @@
     @see https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-Ruleset
 -->
 <ruleset name="Custom Standard" namespace="MyProject\CS\Standard">
-    <rule ref="Sandfox"/>
-    <config name="testVersion" value="7.1-"/>
+    <rule ref="SandFox_PHP71"/>
     <file>src</file>
     <file>tests</file>
 </ruleset>
