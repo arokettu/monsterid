@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          convertDeprecationsToExceptions="true"
+         executionOrder="random"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd">
     <testsuites>
         <testsuite name="all">
