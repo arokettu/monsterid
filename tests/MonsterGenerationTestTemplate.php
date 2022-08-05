@@ -4,25 +4,42 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID\Tests;
 
-use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
+use SandFox\MonsterID\Config;
 use SandFox\MonsterID\Monster;
+use SandFox\MonsterID\Randomizer\FactoryInterface;
 
 use function SandFox\MonsterID\build_monster;
 use function SandFox\MonsterID\build_monster_gd;
 use function SandFox\MonsterID\stream_monster;
 
-class MonsterGenerationTest extends TestCase
+abstract class MonsterGenerationTestTemplate extends TestCase
 {
+    abstract protected function getDir(): string;
+    abstract protected function getFactory(): FactoryInterface;
+
+    public function setUp(): void
+    {
+        Config::setRandomizerFactory($this->getFactory());
+    }
+
+    public function tearDown(): void
+    {
+        Config::setRandomizerFactory(); // reset to the default
+    }
+
     private function getImageFile(string $string, int $size): string
     {
-        file_put_contents(
-            __DIR__ . "/data/{$string}-{$size}.png",
-            (new Monster($string, $size))->getImage()
-        );
+        $dir = $this->getDir();
+
+        // for test updates
+        // file_put_contents(
+        //     __DIR__ . "/data/{$dir}/{$string}-{$size}.png",
+        //     (new Monster($string, $size))->getImage()
+        // );
 
         // recode png to ignore gd compression difference
-        $image = imagecreatefrompng(__DIR__ . "/data/{$string}-{$size}.png");
+        $image = imagecreatefrompng(__DIR__ . "/data/{$dir}/{$string}-{$size}.png");
         ob_start();
         imagepng($image);
         return ob_get_clean();
@@ -50,30 +67,6 @@ class MonsterGenerationTest extends TestCase
 
         $this->assertNotEquals($monster1, $monster2); // two runs with empty seed should result in different monsters
         // we may have failures here from time to time due to randomness
-    }
-
-    public function testImageSize(): void
-    {
-        $monster1 = (new Monster('test@example.com'))->getImage(); // default size is 120
-
-        [$width1, $height1] = getimagesizefromstring($monster1);
-
-        self::assertEquals(120, $width1);
-        self::assertEquals(120, $height1);
-
-        $monster2 = (new Monster('test@example.com', 64))->getImage(); // shrink
-
-        [$width2, $height2] = getimagesizefromstring($monster2);
-
-        self::assertEquals(64, $width2);
-        self::assertEquals(64, $height2);
-
-        $monster3 = (new Monster('test@example.com', 256))->getImage(); // expand
-
-        [$width3, $height3] = getimagesizefromstring($monster3);
-
-        self::assertEquals(256, $width3);
-        self::assertEquals(256, $height3);
     }
 
     public function testImageContent(): void
@@ -112,18 +105,6 @@ class MonsterGenerationTest extends TestCase
         rewind($stream);
 
         self::assertEquals($this->getImageFile('test@example.com', 120), stream_get_contents($stream));
-    }
-
-    public function testInvalidStream(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        stream_monster('not a stream');
-    }
-
-    public function testNoNegativeSizes(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        build_monster('test', -100);
     }
 
     public function testDeprecatedMethods(): void
