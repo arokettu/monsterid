@@ -6,7 +6,7 @@ namespace SandFox\MonsterID\Randomizer;
 
 use Random\Engine;
 
-class DefaultV3Factory implements FactoryInterface
+final class DefaultV3Factory implements FactoryInterface
 {
     public function getRandomizer(string $seed): Engine
     {
