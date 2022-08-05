@@ -4,35 +4,36 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID;
 
+use Random\Randomizer;
+use SandFox\MonsterID\Randomizer\FactoryInterface;
+
 use function Arokettu\IsResource\try_get_resource_type;
 
 final class Monster
 {
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
 
-    /** @var int */
-    private $seed;
+    /** @var $string */
+    private $string;
     /** @var int */
     private $size;
 
     /** @var resource|\GdImage|null */
     private $monster = null;
+    /** @var FactoryInterface */
+    private $rngFactory = null;
 
-    public function __construct(?string $string = null, int $size = MONSTER_DEFAULT_SIZE)
-    {
+    public function __construct(
+        ?string $string = null,
+        int $size = MONSTER_DEFAULT_SIZE,
+        FactoryInterface $rngFactory = null
+    ) {
         if ($size < 1) {
             throw new \InvalidArgumentException('$size must be 1 or more');
         }
 
-        $binSeed = $string === null ?
-            random_bytes(4) : // get something random if no string
-            md5($string, true);
-
-        // first index of unpack is 1
-        // convert to 32bit signed integer
-        [/* $_ */, $intSeed] = unpack('l', $binSeed);
-
-        $this->seed = $intSeed;
+        $this->rngFactory = $rngFactory ?? MonsterConfig::getRandomizerFactory();
+        $this->string = $string ?? random_bytes(8);
         $this->size = $size;
     }
 
@@ -104,15 +105,14 @@ final class Monster
             return $this->getImage();
         }
 
-        $monster = new Monster('', $size);
-        $monster->seed = $this->seed; // overwrite seed
+        $monster = new Monster($this->string, $size, $this->rngFactory);
 
         return $monster->getImage();
     }
 
     private function buildImage(): void
     {
-        $randomizer = new Randomizer($this->seed);
+        $randomizer = new Randomizer($this->rngFactory->getRandomizer($this->string));
 
         $monster = $this->createImage();
         $parts = $this->generateRandomParts($randomizer);
@@ -163,9 +163,9 @@ final class Monster
         if ($part == 'body') {
             $color = imagecolorallocate(
                 $monster,
-                $randomizer->rand(20, 235),
-                $randomizer->rand(20, 235),
-                $randomizer->rand(20, 235)
+                $randomizer->getInt(20, 235),
+                $randomizer->getInt(20, 235),
+                $randomizer->getInt(20, 235)
             );
             imagefill($monster, MONSTER_DEFAULT_SIZE / 2, MONSTER_DEFAULT_SIZE / 2, $color);
         }
@@ -199,17 +199,17 @@ final class Monster
     {
         // throw the dice for body parts
         return [
-            'legs' =>   $randomizer->rand(1, 5),
-            'hair' =>   $randomizer->rand(1, 5),
-            'arms' =>   $randomizer->rand(1, 5),
-            'body' =>   $randomizer->rand(1, 15),
-            'eyes' =>   $randomizer->rand(1, 15),
-            'mouth' =>  $randomizer->rand(1, 10),
+            'legs' =>   $randomizer->getInt(1, 5),
+            'hair' =>   $randomizer->getInt(1, 5),
+            'arms' =>   $randomizer->getInt(1, 5),
+            'body' =>   $randomizer->getInt(1, 15),
+            'eyes' =>   $randomizer->getInt(1, 15),
+            'mouth' =>  $randomizer->getInt(1, 10),
         ];
     }
 
     public function __sleep(): array
     {
-        return ['seed', 'size'];
+        return ['string', 'size', 'rngFactory'];
     }
 }
