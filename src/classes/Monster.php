@@ -32,7 +32,7 @@ final class Monster
             throw new \InvalidArgumentException('$size must be 1 or more');
         }
 
-        $this->rngFactory = $rngFactory ?? MonsterConfig::getRandomizerFactory();
+        $this->rngFactory = $rngFactory ?? Config::getRandomizerFactory();
         $this->string = $string ?? random_bytes(8);
         $this->size = $size;
     }

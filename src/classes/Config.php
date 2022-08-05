@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID;
 
-use SandFox\MonsterID\Randomizer\FactoryInterface;
 use SandFox\MonsterID\Randomizer\DefaultV2Factory;
+use SandFox\MonsterID\Randomizer\FactoryInterface;
 
-final class MonsterConfig
+final class Config
 {
     /** @var FactoryInterface */
     private static $randomizerFactory = null;
