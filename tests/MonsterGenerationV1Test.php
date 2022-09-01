@@ -7,7 +7,7 @@ namespace SandFox\MonsterID\Tests;
 use SandFox\MonsterID\Randomizer\DefaultV1Factory;
 use SandFox\MonsterID\Randomizer\FactoryInterface;
 
-class MonsterGenerationV1Test
+class MonsterGenerationV1Test extends MonsterGenerationTestTemplate
 {
     protected function getDir(): string
     {
