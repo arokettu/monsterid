@@ -45,7 +45,7 @@
         "php": "^7.1 | ^8.0",
         "ext-gd": "*",
         "arokettu/is-resource": "^1.0",
-        "arokettu/random-polyfill": "^0.5.0 | ^1.0.0",
+        "arokettu/random-polyfill": "^1.0.0@beta",
         "symfony/deprecation-contracts": "^2.1 | ^3.0"
     },
     "require-dev": {
