@@ -1,4 +1,7 @@
 /assets/src         export-ignore
+/docs/*.py          export-ignore
+/docs/*.txt         export-ignore
+/docs/_*            export-ignore
 /tests              export-ignore
 /example            export-ignore
 /.git*              export-ignore
