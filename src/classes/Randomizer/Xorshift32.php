@@ -30,6 +30,6 @@ final class Xorshift32 implements Engine
         $this->seed ^= ($this->seed >> 17);
         $this->seed ^= ($this->seed << 5) & 0x7fffffff;
 
-        return pack('VV', $this->seed, 0); // 32 bit value
+        return pack('V', $this->seed); // 32 bit value
     }
 }
