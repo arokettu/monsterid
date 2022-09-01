@@ -4,6 +4,7 @@
 :CombinatoricCritters:  http://www.levitated.net/bones/walkingFaces/index.html
 
 link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square[Packagist]]
+link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/php-v/arokettu/random-polyfill.svg?style=flat-square[PHP]]
 link:https://opensource.org/licenses/MIT[image:https://img.shields.io/github/license/sandfoxme/monsterid.svg?style=flat-square[license]]
 link:https://gitlab.com/sandfox/monsterid/-/pipelines[image:https://img.shields.io/gitlab/pipeline/sandfox/monsterid/master.svg?style=flat-square[Gitlab pipeline status]]
 link:https://codecov.io/gl/sandfox/monsterid/[image:https://img.shields.io/codecov/c/gl/sandfox/monsterid?style=flat-square[Codecov]]
