@@ -11,6 +11,6 @@ final class DefaultV3Factory implements FactoryInterface
     public function getRandomizer(string $seed): Engine
     {
         // fast and native
-        return new Engine\PcgOneseq128XslRr64(md5($seed, true));
+        return new Engine\Xoshiro256StarStar(hash('sha256', $seed, true));
     }
 }
