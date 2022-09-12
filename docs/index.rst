@@ -24,100 +24,13 @@ Install it with Composer
 
 .. warning:: Version 2.0.0 uses bad random generation and therefore is not recommended
 
-Usage
-=====
+Documentation
+=============
 
-Function-style
---------------
+.. toctree::
 
-Get PNG as a string:
-
-.. code-block:: php
-
-    <?php
-
-    use function SandFox\MonsterID\build_monster;
-
-    // output to browser
-    header('Content-type: image/png');
-    echo build_monster('email@example.com', 150);
-
-Put PNG to a stream:
-
-.. code-block:: php
-
-    <?php
-
-    use function SandFox\MonsterID\stream_monster;
-
-    // save to file
-    $stream = fopen('avatar.png', 'w');
-    stream_monster($stream, 'email@example.com', 150);
-    fclose($stream);
-
-    // more efficient output to browser
-    $stream = fopen('php://temp', 'r+');
-    stream_monster($stream, 'email@example.com', 150);
-    rewind($stream);
-    fpassthru($stream);
-    fclose($stream);
-
-Export GD object:
-
-.. code-block:: php
-
-    <?php
-
-    use function SandFox\MonsterID\build_monster_gd;
-
-    // convert it to a different format for example
-    $gd = build_monster_gd('email@example.com', 150); // a copy of the internal gd object
-    header('Content-type: image/avif');
-    imageavif($gd);
-    imagedestroy($gd); // it's your responsibility to destroy the resource (PHP < 8.0)
-
-Object-style
-------------
-
-.. code-block:: php
-
-    <?php
-
-    use SandFox\MonsterID\Monster;
-
-    $monster = new Monster('email@example.com', 150);
-
-    // output it to browser
-    header('Content-type: image/png');
-    echo $monster->getImage();
-
-    // save it to file
-    $monster->writeToStream(fopen('avatar.png', 'w'));
-
-    // gd
-    header('Content-type: image/avif');
-    imageavif($monster->getGdImage());
-
-Upgrade from 1.x
-================
-
-* Expect different images to be generated
-* Namespace ``SandFoxMe\MonsterID`` is removed, use ``SandFox\MonsterID``
-* Object style changes
-
-  .. code-block:: php
-
-        <?php
-
-        use SandFox\MonsterID\Monster;
-
-        // 1.x
-        (new Monster('email@example.com'))->build(150);
-        // 2.x
-        (new Monster('email@example.com', 150))->getImage();
-
-  * Size parameter moved to the constructor
-  * ``build()`` is now ``getImage()``
+    usage
+    upgrade
 
 License
 =======
