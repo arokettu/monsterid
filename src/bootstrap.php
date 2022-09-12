@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID;
 
+use SandFox\MonsterID\Randomizer\FactoryInterface;
+
 const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
 
 /**
@@ -11,10 +13,12 @@ const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
  * @param int $size Image size (square size x size)
  * @return string PNG image content
  */
-function build_monster(?string $string = null, int $size = MONSTER_DEFAULT_SIZE): string
-{
-    $monster = new Monster($string, $size);
-
+function build_monster(
+    ?string $string = null,
+    int $size = MONSTER_DEFAULT_SIZE,
+    ?FactoryInterface $rngFactory = null
+): string {
+    $monster = new Monster($string, $size, $rngFactory);
     return $monster->getImage();
 }
 
@@ -24,10 +28,13 @@ function build_monster(?string $string = null, int $size = MONSTER_DEFAULT_SIZE)
  * @param int $size Image size (square size x size)
  * @return resource The same stream as $stream
  */
-function stream_monster($stream, ?string $string = null, int $size = MONSTER_DEFAULT_SIZE)
-{
-    $monster = new Monster($string, $size);
-
+function stream_monster(
+    $stream,
+    ?string $string = null,
+    int $size = MONSTER_DEFAULT_SIZE,
+    ?FactoryInterface $rngFactory = null
+) {
+    $monster = new Monster($string, $size, $rngFactory);
     return $monster->writeToStream($stream);
 }
 
@@ -36,9 +43,11 @@ function stream_monster($stream, ?string $string = null, int $size = MONSTER_DEF
  * @param int $size Image size (square size x size)
  * @return \GdImage|resource GD object
  */
-function build_monster_gd(?string $string = null, int $size = MONSTER_DEFAULT_SIZE)
-{
-    $monster = new Monster($string, $size);
-
+function build_monster_gd(
+    ?string $string = null,
+    int $size = MONSTER_DEFAULT_SIZE,
+    ?FactoryInterface $rngFactory = null
+) {
+    $monster = new Monster($string, $size, $rngFactory);
     return $monster->getGdImage();
 }

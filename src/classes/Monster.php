@@ -26,7 +26,7 @@ final class Monster
     public function __construct(
         ?string $string = null,
         int $size = MONSTER_DEFAULT_SIZE,
-        FactoryInterface $rngFactory = null
+        ?FactoryInterface $rngFactory = null
     ) {
         if ($size < 1) {
             throw new \InvalidArgumentException('$size must be 1 or more');
