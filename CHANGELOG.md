@@ -1,5 +1,13 @@
 # Changelog
 
+## next
+
+* Custom sequence generators
+  * V1 compatible-ish
+  * Future compatible V3
+  * Current one is designated as V2
+  * Users can create a custom one, compatible with PHP ext-random
+
 ## 2.1.2
 
 *Nov 30, 2021*
