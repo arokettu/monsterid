@@ -13,7 +13,7 @@ final class Monster
 {
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
 
-    /** @var $string */
+    /** @var string */
     private $string;
     /** @var int */
     private $size;
