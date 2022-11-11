@@ -6,7 +6,7 @@ Upgrade from 1.x
 
 * Expect different images to be generated
 
-  * Use V1 RNG factory in MonsterID 2.1+ for partial compatibility
+  * Use V1 RNG factory in MonsterID 2.2+ for partial compatibility
 * Namespace ``SandFoxMe\MonsterID`` is removed, use ``SandFox\MonsterID``
 * Object style changes
 
