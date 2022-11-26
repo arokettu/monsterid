@@ -1,6 +1,8 @@
 # Changelog
 
-## next
+## 2.2.0
+
+*Nov 26, 2022*
 
 * Custom sequence generators
   * V1 compatible-ish
