@@ -13,13 +13,9 @@ use Random\Engine;
  */
 final class Xorshift32 implements Engine
 {
-    /** @var int */
-    private $seed;
-
-    public function __construct(int $seed)
-    {
-        $this->seed = $seed;
-    }
+    public function __construct(
+        private int $seed,
+    ) {}
 
     public function generate(): string
     {

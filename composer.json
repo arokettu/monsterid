@@ -44,7 +44,7 @@
         }
     },
     "require": {
-        "php": "^7.1 | ^8.0",
+        "php": "^8.0",
         "ext-gd": "*",
         "arokettu/is-resource": "^1.0",
         "arokettu/random-polyfill": "^1.0.1",
@@ -55,6 +55,6 @@
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^10@dev",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^4.10"
+        "vimeo/psalm": "^5.4"
     }
 }

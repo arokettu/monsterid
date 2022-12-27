@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID;
 
+use GdImage;
 use SandFox\MonsterID\Randomizer\FactoryInterface;
 
 const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
@@ -41,13 +42,13 @@ function stream_monster(
 /**
  * @param string|null $string Any string id like email or openid
  * @param int $size Image size (square size x size)
- * @return \GdImage|resource GD object
+ * @return GdImage GD object
  */
 function build_monster_gd(
     ?string $string = null,
     int $size = MONSTER_DEFAULT_SIZE,
     ?FactoryInterface $rngFactory = null
-) {
+): GdImage {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getGdImage();
 }

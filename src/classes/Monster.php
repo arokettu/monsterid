@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SandFox\MonsterID;
 
+use GdImage;
 use Random\Randomizer;
 use SandFox\MonsterID\Randomizer\FactoryInterface;
 
@@ -13,15 +14,11 @@ final class Monster
 {
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
 
-    /** @var string */
-    private $string;
-    /** @var int */
-    private $size;
+    private string $string;
+    private int $size;
 
-    /** @var resource|\GdImage|null */
-    private $monster = null;
-    /** @var FactoryInterface */
-    private $rngFactory = null;
+    private ?GdImage $monster = null;
+    private ?FactoryInterface $rngFactory = null;
 
     public function __construct(
         ?string $string = null,
@@ -37,17 +34,7 @@ final class Monster
         $this->size = $size;
     }
 
-    public function __destruct()
-    {
-        if ($this->monster) {
-            imagedestroy($this->monster);
-        }
-    }
-
-    /**
-     * @return \GdImage|resource
-     */
-    public function getGdImage()
+    public function getGdImage(): GdImage
     {
         if ($this->monster === null) {
             $this->buildImage();
@@ -66,7 +53,7 @@ final class Monster
     public function writeToStream($stream)
     {
         if (try_get_resource_type($stream) !== 'stream') {
-            throw new \InvalidArgumentException('$stream should be a readable stream');
+            throw new \InvalidArgumentException('$stream should be a writable stream');
         }
 
         if ($this->monster === null) {
@@ -125,10 +112,7 @@ final class Monster
         $this->monster = $this->prepareOutput($monster);
     }
 
-    /**
-     * @return \GdImage|resource
-     */
-    private function createImage()
+    private function createImage(): GdImage
     {
         // create background
         $monster = imagecreatetruecolor(MONSTER_DEFAULT_SIZE, MONSTER_DEFAULT_SIZE);
@@ -141,13 +125,7 @@ final class Monster
         return $monster;
     }
 
-    /**
-     * @param resource|\GdImage $monster
-     * @param string $part
-     * @param int $number
-     * @param Randomizer $randomizer
-     */
-    private function applyPartToImage($monster, string $part, int $number, Randomizer $randomizer): void
+    private function applyPartToImage(GdImage $monster, string $part, int $number, Randomizer $randomizer): void
     {
         $file = self::PARTS_PATH . DIRECTORY_SEPARATOR . "{$part}_{$number}.png";
 
@@ -171,11 +149,7 @@ final class Monster
         }
     }
 
-    /**
-     * @param resource|\GdImage $monster
-     * @return resource|\GdImage
-     */
-    private function prepareOutput($monster)
+    private function prepareOutput(GdImage $monster): GdImage
     {
         // resize if needed, then output
         if ($this->size === MONSTER_DEFAULT_SIZE) {
@@ -192,7 +166,6 @@ final class Monster
     }
 
     /**
-     * @param Randomizer $randomizer
      * @return array<string, int>
      */
     private function generateRandomParts(Randomizer $randomizer): array
@@ -208,8 +181,21 @@ final class Monster
         ];
     }
 
-    public function __sleep(): array
+    public function __serialize(): array
     {
-        return ['string', 'size', 'rngFactory'];
+        return [
+            'string'        => $this->string,
+            'size'          => $this->size,
+            'rngFactory'    => $this->rngFactory,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        [
+            'string'        => $this->string,
+            'size'          => $this->size,
+            'rngFactory'    => $this->rngFactory,
+        ] = $data;
     }
 }
