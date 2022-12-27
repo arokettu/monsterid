@@ -107,15 +107,6 @@ abstract class MonsterGenerationTestTemplate extends TestCase
         self::assertEquals($this->getImageFile('test@example.com', 120), stream_get_contents($stream));
     }
 
-    public function testDeprecatedMethods(): void
-    {
-        $monster1 = (new Monster('test@example.com'))->build(240);
-        self::assertEquals($this->getImageFile('test@example.com', 240), $monster1);
-
-        $monster2 = (new Monster('test@example.com', 240))->build(240);
-        self::assertEquals($this->getImageFile('test@example.com', 240), $monster2);
-    }
-
     public function testSerialization(): void
     {
         $monster = new Monster('test@example.com', 240);
