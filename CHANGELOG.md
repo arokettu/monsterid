@@ -2,6 +2,12 @@
 
 ## 2.x
 
+### 2.3.1
+
+*Dec 27, 2022*
+
+* Fix crash in the autoloader
+
 ### 2.3.0
 
 *Dec 27, 2022*
