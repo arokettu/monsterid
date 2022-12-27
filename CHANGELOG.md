@@ -73,7 +73,7 @@
 * Relicensed to MIT to sync with upstream [[Github#1]]
 * Shrinked zip package a bit by adding some development files to .gitattributes
 
-[Github#1]: https://github.com/sandfoxme/monsterid/issues/1
+[Github#1]: https://github.com/arokettu/monsterid/issues/1
 
 ### 1.1.0
 
