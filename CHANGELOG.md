@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.x
+
+### 3.0.0
+
+*Dec 27, 2022*
+
+* PHP 8.0 is now required
+* The package was renamed to `arokettu/monsterid`
+  * In newly published package the broken 2.0.0 version was skipped
+* The namespace was changed to `Arokettu\MonsterID`
+* Deprecated `build()` method was removed
+* GD resources are now properly type hinted as classes
+
 ## 2.x
 
 ### 2.3.1
