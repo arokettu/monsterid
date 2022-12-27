@@ -30,7 +30,7 @@
 
 * Fixed random generation
 
-### 2.0.0
+### 2.0.0 (yanked, was 57bd092)
 
 *Sep 7, 2021*
 
