@@ -2,6 +2,12 @@
 
 ## 2.x
 
+### 2.3.0
+
+*Dec 27, 2022*
+
+* Introduce future compatibility by supporting `Arokettu\MonsterID` namespace
+
 ### 2.2.0
 
 *Nov 26, 2022*
