@@ -5,3 +5,4 @@ composer.lock
 /reports
 /.phpunit.result.cache
 /docs/build
+/docs/html

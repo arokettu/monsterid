@@ -81,8 +81,8 @@ The library supports 3 random number generators:
 * Version 1: Mersenne Twister based.
   It generates the same images as MonsterID v1 and the original implementation did in PHP 7.2+.
   (7.1 may be glitchy, rand() in earlier versions was not MT based and is not reproducible)
-* Version 2 (default): Xorshift32 based, as implemented in MonsterID 2.1+
-* Version 3 (will be default in MonsterID 3): native PHP Xoshiro256** based sequence.
+* Version 2 (was default in MonsterID 2): Xorshift32 based, as implemented in MonsterID 2.1+
+* Version 3 (default): native PHP Xoshiro256** based sequence.
   Recommended if you use PHP 8.2+
 
 Also the lib provides ``\Arokettu\MonsterID\Randomizer\FactoryInterface`` that you can use to implement your own.
