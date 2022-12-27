@@ -6,7 +6,7 @@ namespace Arokettu\MonsterID;
 
 use SandFox\MonsterID\Randomizer\FactoryInterface;
 
-const MONSTER_DEFAULT_SIZE = \SandFox\MonsterID\MONSTER_DEFAULT_SIZE; // same as image parts size
+const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
 
 /**
  * @param string|null $string Any string id like email or openid
