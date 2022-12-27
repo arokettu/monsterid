@@ -33,7 +33,9 @@
             "SandFox\\MonsterID\\": "src/classes"
         },
         "files": [
-            "src/bootstrap.php"
+            "future_autoload.php",
+            "future_functions.php",
+            "src/functions.php"
         ]
     },
     "autoload-dev": {
