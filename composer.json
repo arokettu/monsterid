@@ -30,17 +30,15 @@
     },
     "autoload": {
         "psr-4": {
-            "SandFox\\MonsterID\\": "src/classes"
+            "Arokettu\\MonsterID\\": "src/classes"
         },
         "files": [
-            "future_autoload.php",
-            "future_functions.php",
             "src/functions.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "SandFox\\MonsterID\\Tests\\": "tests"
+            "Arokettu\\MonsterID\\Tests\\": "tests"
         }
     },
     "require": {

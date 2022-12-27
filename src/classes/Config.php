@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID;
+namespace Arokettu\MonsterID;
 
-use SandFox\MonsterID\Randomizer\DefaultV3Factory;
-use SandFox\MonsterID\Randomizer\FactoryInterface;
+use Arokettu\MonsterID\Randomizer\DefaultV3Factory;
+use Arokettu\MonsterID\Randomizer\FactoryInterface;
 
 final class Config
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID\Randomizer;
+namespace Arokettu\MonsterID\Randomizer;
 
 use Random\Engine;
 

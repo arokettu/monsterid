@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID;
+namespace Arokettu\MonsterID;
 
 final class PartNotLoadedException extends MonsterException
 {

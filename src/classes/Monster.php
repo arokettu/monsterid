@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID;
+namespace Arokettu\MonsterID;
 
+use Arokettu\MonsterID\Randomizer\FactoryInterface;
 use GdImage;
 use Random\Randomizer;
-use SandFox\MonsterID\Randomizer\FactoryInterface;
 
 use function Arokettu\IsResource\try_get_resource_type;
 

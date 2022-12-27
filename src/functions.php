@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID;
+namespace Arokettu\MonsterID;
 
+use Arokettu\MonsterID\Randomizer\FactoryInterface;
 use GdImage;
-use SandFox\MonsterID\Randomizer\FactoryInterface;
 
 const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
 

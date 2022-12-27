@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID\Tests;
+namespace Arokettu\MonsterID\Tests;
 
-use SandFox\MonsterID\Randomizer\DefaultV3Factory;
-use SandFox\MonsterID\Randomizer\FactoryInterface;
+use Arokettu\MonsterID\Randomizer\DefaultV3Factory;
+use Arokettu\MonsterID\Randomizer\FactoryInterface;
 
 class MonsterGenerationV3Test extends MonsterGenerationTestTemplate
 {

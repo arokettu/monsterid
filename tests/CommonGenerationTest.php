@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID\Tests;
+namespace Arokettu\MonsterID\Tests;
 
+use Arokettu\MonsterID\Monster;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
-use SandFox\MonsterID\Monster;
 
-use function SandFox\MonsterID\build_monster;
-use function SandFox\MonsterID\stream_monster;
+use function Arokettu\MonsterID\build_monster;
+use function Arokettu\MonsterID\stream_monster;
 
 class CommonGenerationTest extends TestCase
 {

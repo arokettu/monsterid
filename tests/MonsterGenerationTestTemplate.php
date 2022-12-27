@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace SandFox\MonsterID\Tests;
+namespace Arokettu\MonsterID\Tests;
 
+use Arokettu\MonsterID\Config;
+use Arokettu\MonsterID\Monster;
+use Arokettu\MonsterID\Randomizer\FactoryInterface;
 use PHPUnit\Framework\TestCase;
-use SandFox\MonsterID\Config;
-use SandFox\MonsterID\Monster;
-use SandFox\MonsterID\Randomizer\FactoryInterface;
 
-use function SandFox\MonsterID\build_monster;
-use function SandFox\MonsterID\build_monster_gd;
-use function SandFox\MonsterID\stream_monster;
+use function Arokettu\MonsterID\build_monster;
+use function Arokettu\MonsterID\build_monster_gd;
+use function Arokettu\MonsterID\stream_monster;
 
 abstract class MonsterGenerationTestTemplate extends TestCase
 {
