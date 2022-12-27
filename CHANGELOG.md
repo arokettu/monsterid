@@ -1,6 +1,8 @@
 # Changelog
 
-## 2.2.0
+## 2.x
+
+### 2.2.0
 
 *Nov 26, 2022*
 
@@ -10,25 +12,25 @@
   * Current one is designated as V2
   * Users can create a custom one, compatible with PHP ext-random
 
-## 2.1.2
+### 2.1.2
 
 *Nov 30, 2021*
 
 * Allow symfony/contracts v3
 
-## 2.1.1
+### 2.1.1
 
 *Sep 25, 2021*
 
 * The resource type is now properly checked before writing to it
 
-## 2.1.0
+### 2.1.0
 
 *Sep 8, 2021*
 
 * Fixed random generation
 
-## 2.0.0
+### 2.0.0
 
 *Sep 7, 2021*
 
