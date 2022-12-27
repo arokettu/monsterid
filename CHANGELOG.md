@@ -42,7 +42,15 @@
 * New object methods: `getImage`, `writeToStream()`, `getGdImage()`
 * `build()` now triggers deprecation warning
 
-## 1.3.0
+## 1.x
+
+### 1.4.0
+
+*Dec 27, 2022*
+
+* Introduce future compatibility by supporting `Arokettu\MonsterID` namespace
+
+### 1.3.0
 
 *Sep 7, 2021*
 
@@ -50,13 +58,13 @@
 * Added `getImage()` method for forward compatibility with 2.0
 * Deprecated `build()` method. It will be removed in ~~2.0~~ 3.0
 
-## 1.2.0
+### 1.2.0
 
 *Apr 9, 2019*
 
 * Changed base namespace to SandFox
 
-## 1.1.1
+### 1.1.1
 
 *Apr 3, 2018*
 
@@ -65,7 +73,7 @@
 
 [Github#1]: https://github.com/sandfoxme/monsterid/issues/1
 
-## 1.1.0
+### 1.1.0
 
 *Dec 12, 2017*
 
@@ -73,7 +81,7 @@
 * Added protection from possible resource leaks
 * Bumped PHP requirement to 5.5 due fo usage of `finally`
 
-## 1.0.2
+### 1.0.2
 
 *Dec 10, 2017*
 
@@ -82,13 +90,13 @@
 
 As the library seems unused currently, the old package will be just deleted from packagist
 
-## 1.0.1
+### 1.0.1
 
 *Oct 30, 2015*
 
 replaced one last missed die() with exception
 
-## 1.0.0 "Halloween"
+### 1.0.0 "Halloween"
 
 *Oct 30, 2015*
 
