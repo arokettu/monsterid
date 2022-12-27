@@ -32,7 +32,7 @@ composer require 'arokettu/monsterid'
 ----
 <?php
 
-use function Aroekttu\MonsterID\build_monster;
+use function Arokettu\MonsterID\build_monster;
 
 header('Content-type: image/png');
 echo build_monster('sandfox@sandfox.me', 150);
