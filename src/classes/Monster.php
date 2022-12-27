@@ -79,24 +79,6 @@ final class Monster
         return $image;
     }
 
-    /**
-     * @deprecated use getImage()
-     * @param int $size
-     * @return string
-     */
-    public function build(int $size = MONSTER_DEFAULT_SIZE): string
-    {
-        trigger_deprecation('sandfoxme/monsterid', '2.0', 'Deprecated in favor of getImage()');
-
-        if ($size === $this->size) {
-            return $this->getImage();
-        }
-
-        $monster = new Monster($this->string, $size, $this->rngFactory);
-
-        return $monster->getImage();
-    }
-
     private function buildImage(): void
     {
         $randomizer = new Randomizer($this->rngFactory->getRandomizer($this->string));
