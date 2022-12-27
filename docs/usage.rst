@@ -13,7 +13,7 @@ Get PNG as a string::
 
     <?php
 
-    use function SandFox\MonsterID\build_monster;
+    use function Arokettu\MonsterID\build_monster;
 
     // output to browser
     header('Content-type: image/png');
@@ -23,7 +23,7 @@ Put PNG to a stream::
 
     <?php
 
-    use function SandFox\MonsterID\stream_monster;
+    use function Arokettu\MonsterID\stream_monster;
 
     // save to file
     $stream = fopen('avatar.png', 'w');
@@ -41,7 +41,7 @@ Export GD object::
 
     <?php
 
-    use function SandFox\MonsterID\build_monster_gd;
+    use function Arokettu\MonsterID\build_monster_gd;
 
     // convert it to a different format for example
     $gd = build_monster_gd('email@example.com', 150); // a copy of the internal gd object
@@ -56,7 +56,7 @@ Monster object
 
     <?php
 
-    use SandFox\MonsterID\Monster;
+    use Arokettu\MonsterID\Monster;
 
     $monster = new Monster('email@example.com', 150);
 
@@ -85,7 +85,7 @@ The library supports 3 random number generators:
 * Version 3 (will be default in MonsterID 3): native PHP Xoshiro256** based sequence.
   Recommended if you use PHP 8.2+
 
-Also the lib provides ``\SandFox\MonsterID\Randomizer\FactoryInterface`` that you can use to implement your own.
+Also the lib provides ``\Arokettu\MonsterID\Randomizer\FactoryInterface`` that you can use to implement your own.
 
 .. note::
     Monster object will be serializable if your factory implementation is.
@@ -98,10 +98,10 @@ Setting a default factory globally
 
     <?php
 
-    use SandFox\MonsterID\Config;
-    use SandFox\MonsterID\Randomizer\DefaultV1Factory;
-    use SandFox\MonsterID\Randomizer\DefaultV2Factory;
-    use SandFox\MonsterID\Randomizer\DefaultV3Factory;
+    use Arokettu\MonsterID\Config;
+    use Arokettu\MonsterID\Randomizer\DefaultV1Factory;
+    use Arokettu\MonsterID\Randomizer\DefaultV2Factory;
+    use Arokettu\MonsterID\Randomizer\DefaultV3Factory;
 
     Config::setRandomizerFactory(); // reset to default (currently V2)
     Config::setRandomizerFactory(new DefaultV1Factory()); // set V1
@@ -117,15 +117,14 @@ Object constructor and all functions support passing $rngFactory explicitly::
 
     <?php
 
-    use SandFox\MonsterID\Monster;
-    use SandFox\MonsterID\Randomizer\DefaultV3Factory;
+    use Arokettu\MonsterID\Monster;
+    use Arokettu\MonsterID\Randomizer\DefaultV3Factory;
 
-    use function SandFox\MonsterID\build_monster;
+    use function Arokettu\MonsterID\build_monster;
 
-    use const SandFox\MonsterID\MONSTER_DEFAULT_SIZE;
+    use const Arokettu\MonsterID\MONSTER_DEFAULT_SIZE;
 
     $image = (new Monster('test@example.com', MONSTER_DEFAULT_SIZE, new DefaultV3Factory()))
         ->getImage();
     // or
     $image = build_monster('test@example.com', MONSTER_DEFAULT_SIZE, new DefaultV3Factory());
-

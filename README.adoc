@@ -3,9 +3,9 @@
 :DonPark:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
 :CombinatoricCritters:  http://www.levitated.net/bones/walkingFaces/index.html
 
-link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square[Packagist]]
-link:https://packagist.org/packages/sandfoxme/monsterid[image:https://img.shields.io/packagist/php-v/sandfoxme/monsterid.svg?style=flat-square[PHP]]
-link:https://opensource.org/licenses/MIT[image:https://img.shields.io/github/license/sandfoxme/monsterid.svg?style=flat-square[license]]
+link:https://packagist.org/packages/arokettu/monsterid[image:https://img.shields.io/packagist/v/arokettu/monsterid.svg?style=flat-square[Packagist]]
+link:https://packagist.org/packages/arokettu/monsterid[image:https://img.shields.io/packagist/php-v/arokettu/monsterid.svg?style=flat-square[PHP]]
+link:https://opensource.org/licenses/MIT[image:https://img.shields.io/github/license/arokettu/monsterid.svg?style=flat-square[license]]
 link:https://gitlab.com/sandfox/monsterid/-/pipelines[image:https://img.shields.io/gitlab/pipeline/sandfox/monsterid/master.svg?style=flat-square[Gitlab pipeline status]]
 link:https://codecov.io/gl/sandfox/monsterid/[image:https://img.shields.io/codecov/c/gl/sandfox/monsterid?style=flat-square[Codecov]]
 
@@ -23,10 +23,8 @@ Install it with Composer
 
 [source,bash]
 ----
-composer require 'sandfoxme/monsterid:^2.1'
+composer require 'arokettu/monsterid'
 ----
-
-WARNING: Version 2.0.0 uses bad random generation and therefore is not recommended
 
 == Usage
 
@@ -34,7 +32,7 @@ WARNING: Version 2.0.0 uses bad random generation and therefore is not recommend
 ----
 <?php
 
-use function SandFox\MonsterID\build_monster;
+use function Aroekttu\MonsterID\build_monster;
 
 header('Content-type: image/png');
 echo build_monster('sandfox@sandfox.me', 150);

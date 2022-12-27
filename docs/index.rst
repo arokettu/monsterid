@@ -20,9 +20,7 @@ Install it with Composer
 
 .. code:: bash
 
-   composer require 'sandfoxme/monsterid:^2.1'
-
-.. warning:: Version 2.0.0 uses bad random generation and therefore is not recommended
+   composer require 'arokettu/monsterid'
 
 Documentation
 =============
@@ -49,8 +47,8 @@ Original implementation can be found `here <upstream_>`_.
 .. _SandFox:                https://sandfox.me/
 .. _upstream:               https://github.com/splitbrain/monsterID
 
-.. |Packagist|  image:: https://img.shields.io/packagist/v/sandfoxme/monsterid.svg?style=flat-square
-   :target:     https://packagist.org/packages/sandfoxme/monsterid
+.. |Packagist|  image:: https://img.shields.io/packagist/v/arokettu/monsterid.svg?style=flat-square
+   :target:     https://packagist.org/packages/arokettu/monsterid
 .. |GitHub|     image:: https://img.shields.io/badge/get%20on-GitHub-informational.svg?style=flat-square&logo=github
    :target:     https://github.com/arokettu/monsterid
 .. |GitLab|     image:: https://img.shields.io/badge/get%20on-GitLab-informational.svg?style=flat-square&logo=gitlab
