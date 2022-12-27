@@ -14,7 +14,7 @@ final class Config
 
     public static function setRandomizerFactory(FactoryInterface $factory = null): void
     {
-        self::$randomizerFactory = $factory ?? new DefaultV2Factory();
+        self::$randomizerFactory = $factory ?? new DefaultV3Factory();
     }
 
     public static function getRandomizerFactory(): FactoryInterface
