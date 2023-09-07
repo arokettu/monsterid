@@ -2,6 +2,12 @@
 
 ## 2.x
 
+### 2.4.0
+
+*Sep 7, 2023*
+
+* Added RNG compatible with the original implementation (DefaultV0Factory)
+
 ### 2.3.1
 
 *Dec 27, 2022*
@@ -47,6 +53,8 @@
 *Sep 7, 2021*
 
 !!! Random generation in this version is terrible, please don't use it
+
+Forked from 1.3.0
 
 * PHP version bumped to 7.1
 * New randomization algorithm that does not use `rand()` / `srand()` functions and does not alter global random state.
