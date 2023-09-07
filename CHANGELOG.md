@@ -2,9 +2,17 @@
 
 ## 3.x
 
+### 3.1.0
+
+*Sep 7, 2023*
+
+* Added RNG compatible with the original implementation (DefaultV0Factory)
+
 ### 3.0.0
 
 *Dec 27, 2022*
+
+Forked from 2.3.0
 
 * PHP 8.0 is now required
 * The package was renamed to `arokettu/monsterid`
