@@ -1,9 +1,14 @@
-/assets/src         export-ignore
+# template
 /docs/*.py          export-ignore
 /docs/*.txt         export-ignore
 /docs/_*            export-ignore
 /tests              export-ignore
-/example            export-ignore
 /.git*              export-ignore
 /*.yml              export-ignore
+/*.yaml             export-ignore
 /*.xml              export-ignore
+/*.xml.dist         export-ignore
+
+# project
+/assets/src         export-ignore
+/example            export-ignore

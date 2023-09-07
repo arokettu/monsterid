@@ -35,6 +35,7 @@ coverage:
   stage: report
   only:
     - master
+    - tags
   image: php:8.0
   script:
     - composer update

@@ -76,14 +76,15 @@ Random sequences
 
 .. versionadded:: 2.2
 
-The library supports 3 random number generators:
+The library supports 4 random number generators:
 
-* Version 1: Mersenne Twister based.
-  It generates the same images as MonsterID v1 and the original implementation did in PHP 7.2+.
+* Version 0: Mersenne Twister based.
+  It generates the same images as MonsterID version 1.0 and the original implementation did in PHP 7.2+.
   (7.1 may be glitchy, rand() in earlier versions was not MT based and is not reproducible)
+* Version 1: Mersenne Twister based.
+  It generates the same images as MonsterID versions 1.1-1.4 did in PHP 7.2+.
 * Version 2 (was default in MonsterID 2): Xorshift32 based, as implemented in MonsterID 2.1+
 * Version 3 (default): native PHP Xoshiro256** based sequence.
-  Recommended if you use PHP 8.2+
 
 Also the lib provides ``\Arokettu\MonsterID\Randomizer\FactoryInterface`` that you can use to implement your own.
 
@@ -99,11 +100,13 @@ Setting a default factory globally
     <?php
 
     use Arokettu\MonsterID\Config;
+    use Arokettu\MonsterID\Randomizer\DefaultV0Factory;
     use Arokettu\MonsterID\Randomizer\DefaultV1Factory;
     use Arokettu\MonsterID\Randomizer\DefaultV2Factory;
     use Arokettu\MonsterID\Randomizer\DefaultV3Factory;
 
     Config::setRandomizerFactory(); // reset to default (currently V2)
+    Config::setRandomizerFactory(new DefaultV0Factory()); // set V0
     Config::setRandomizerFactory(new DefaultV1Factory()); // set V1
     Config::setRandomizerFactory(new DefaultV2Factory()); // set V2
     Config::setRandomizerFactory(new DefaultV3Factory()); // set V3
