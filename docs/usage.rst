@@ -76,11 +76,13 @@ Random sequences
 
 .. versionadded:: 2.2
 
-The library supports 3 random number generators:
+The library supports 4 random number generators:
 
-* Version 1: Mersenne Twister based.
-  It generates the same images as MonsterID v1 and the original implementation did in PHP 7.2+.
+* Version 0: Mersenne Twister based.
+  It generates the same images as MonsterID version 1.0 and the original implementation did in PHP 7.2+.
   (7.1 may be glitchy, rand() in earlier versions was not MT based and is not reproducible)
+* Version 1: Mersenne Twister based.
+  It generates the same images as MonsterID versions 1.1-1.4 did in PHP 7.2+.
 * Version 2 (default): Xorshift32 based, as implemented in MonsterID 2.1+
 * Version 3 (will be default in MonsterID 3): native PHP Xoshiro256** based sequence.
   Recommended if you use PHP 8.2+
@@ -99,11 +101,13 @@ Setting a default factory globally
     <?php
 
     use SandFox\MonsterID\Config;
+    use SandFox\MonsterID\Randomizer\DefaultV0Factory;
     use SandFox\MonsterID\Randomizer\DefaultV1Factory;
     use SandFox\MonsterID\Randomizer\DefaultV2Factory;
     use SandFox\MonsterID\Randomizer\DefaultV3Factory;
 
     Config::setRandomizerFactory(); // reset to default (currently V2)
+    Config::setRandomizerFactory(new DefaultV0Factory()); // set V0
     Config::setRandomizerFactory(new DefaultV1Factory()); // set V1
     Config::setRandomizerFactory(new DefaultV2Factory()); // set V2
     Config::setRandomizerFactory(new DefaultV3Factory()); // set V3
@@ -128,4 +132,3 @@ Object constructor and all functions support passing $rngFactory explicitly::
         ->getImage();
     // or
     $image = build_monster('test@example.com', MONSTER_DEFAULT_SIZE, new DefaultV3Factory());
-
