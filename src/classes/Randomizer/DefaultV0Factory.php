@@ -10,6 +10,9 @@ final class DefaultV0Factory implements FactoryInterface
 {
     public function getRandomizer(string $seed): Engine
     {
+        // original code was:
+        // $intSeed = hexdec(substr(md5($seed),0,6));
+
         [/*$_*/, $byte1, $byte2, $byte3] = unpack("C3", md5($seed, true));
         $intSeed = $byte1 << 16 | $byte2 << 8 | $byte3;
 
