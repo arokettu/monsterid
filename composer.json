@@ -48,6 +48,7 @@
         "arokettu/random-polyfill": "^1.0.1"
     },
     "require-dev": {
+        "arokettu/random-polyfill": ">= 1.0.1 < 1.99",
         "phpunit/phpunit": ">= 7.0 < 10",
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^1",
