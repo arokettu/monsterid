@@ -27,6 +27,21 @@ cache:
     - composer update
     - vendor/bin/phpunit
 
+# main test matrix
+test:
+  extends: .test
+  stage: test
+  image: ${ARCH}/php:${PHP_VERSION}
+  parallel:
+    matrix:
+      - PHP_VERSION:
+          - '8.0' # lowest version
+          - '8.2' # native random
+          - '8'   # latest 8
+        ARCH:
+          - amd64
+          - i386
+
 # coverage
 coverage:
   variables:
@@ -41,15 +56,3 @@ coverage:
     - composer update
     - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover coverage.xml
     - bash <(curl -s https://codecov.io/bash)
-
-# lowest version
-test-8.0:
-  extends: .test
-  stage: test
-  image: php:8.0
-
-# latest 8
-test-8:
-  extends: .test
-  stage: test
-  image: php:8
