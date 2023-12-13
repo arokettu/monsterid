@@ -51,7 +51,7 @@
         "arokettu/random-polyfill": ">= 1.0.1 < 1.99",
         "phpunit/phpunit": ">= 7.0 < 10",
         "psy/psysh": "*",
-        "sandfox.dev/code-standard": "^1",
+        "sandfox.dev/code-standard": "^1.2023.12.09",
         "squizlabs/php_codesniffer": "*",
         "vimeo/psalm": "^5.4"
     }
