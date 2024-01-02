@@ -14,7 +14,7 @@ final class DefaultV2Factory implements FactoryInterface
 
         // first index of unpack is 1
         // convert to 32bit signed integer
-        [/* $_ */, $intSeed] = unpack('l', $binSeed);
+        ['val' => $intSeed] = unpack('lval', $binSeed);
 
         return new Xorshift32($intSeed);
     }
