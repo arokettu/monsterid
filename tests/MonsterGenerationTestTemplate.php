@@ -60,15 +60,6 @@ abstract class MonsterGenerationTestTemplate extends TestCase
         self::assertEquals($monster2, $monster3); // Two generations by same builder should result in the same monster
     }
 
-    public function testGenerateRandom(): void
-    {
-        $monster1 = build_monster();
-        $monster2 = build_monster();
-
-        $this->assertNotEquals($monster1, $monster2); // two runs with empty seed should result in different monsters
-        // we may have failures here from time to time due to randomness
-    }
-
     public function testImageContent(): void
     {
         $monster1 = (new Monster('test@example.com'))->getImage();

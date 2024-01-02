@@ -40,7 +40,7 @@ class CommonGenerationTest extends TestCase
     public function testInvalidStream(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        stream_monster('not a stream');
+        stream_monster('not a stream', '');
     }
 
     public function testNoNegativeSizes(): void

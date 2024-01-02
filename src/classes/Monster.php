@@ -12,17 +12,16 @@ use function Arokettu\IsResource\try_get_resource_type;
 
 final class Monster
 {
+    public const DEFAULT_SIZE = MONSTER_DEFAULT_SIZE;
+
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
 
-    private string $string;
-    private int $size;
-
-    private ?GdImage $monster = null;
-    private ?FactoryInterface $rngFactory = null;
+    private GdImage $monster;
+    private FactoryInterface $rngFactory;
 
     public function __construct(
-        ?string $string = null,
-        int $size = MONSTER_DEFAULT_SIZE,
+        private string $string,
+        private int $size = self::DEFAULT_SIZE,
         ?FactoryInterface $rngFactory = null
     ) {
         if ($size < 1) {
@@ -30,13 +29,11 @@ final class Monster
         }
 
         $this->rngFactory = $rngFactory ?? Config::getRandomizerFactory();
-        $this->string = $string ?? random_bytes(8);
-        $this->size = $size;
     }
 
     public function getGdImage(): GdImage
     {
-        if ($this->monster === null) {
+        if (!isset($this->monster)) {
             $this->buildImage();
         }
 
@@ -56,7 +53,7 @@ final class Monster
             throw new \InvalidArgumentException('$stream should be a writable stream');
         }
 
-        if ($this->monster === null) {
+        if (!isset($this->monster)) {
             $this->buildImage();
         }
 

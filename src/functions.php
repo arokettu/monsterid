@@ -10,14 +10,14 @@ use GdImage;
 const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
 
 /**
- * @param string|null $string Any string id like email or openid
+ * @param string $string Any string id like email or openid
  * @param int $size Image size (square size x size)
  * @return string PNG image content
  */
 function build_monster(
-    ?string $string = null,
+    string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?FactoryInterface $rngFactory = null
+    ?FactoryInterface $rngFactory = null,
 ): string {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getImage();
@@ -25,29 +25,29 @@ function build_monster(
 
 /**
  * @param resource $stream Stream resource, PNG will be written there
- * @param string|null $string Any string id like email or openid
+ * @param string $string Any string id like email or openid
  * @param int $size Image size (square size x size)
  * @return resource The same stream as $stream
  */
 function stream_monster(
     $stream,
-    ?string $string = null,
+    string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?FactoryInterface $rngFactory = null
+    ?FactoryInterface $rngFactory = null,
 ) {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->writeToStream($stream);
 }
 
 /**
- * @param string|null $string Any string id like email or openid
+ * @param string $string Any string id like email or openid
  * @param int $size Image size (square size x size)
  * @return GdImage GD object
  */
 function build_monster_gd(
-    ?string $string = null,
+    string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?FactoryInterface $rngFactory = null
+    ?FactoryInterface $rngFactory = null,
 ): GdImage {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getGdImage();
