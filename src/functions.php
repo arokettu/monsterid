@@ -24,7 +24,7 @@ function build_monster(
 }
 
 /**
- * @param resource $stream Stream resource, PNG will be written there
+ * @param resource|null $stream Stream resource (or new php://temp), PNG will be written there
  * @param string $string Any string id like email or openid
  * @param int $size Image size (square size x size)
  * @return resource The same stream as $stream

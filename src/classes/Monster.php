@@ -44,13 +44,17 @@ final class Monster
     }
 
     /**
-     * @param resource $stream write png image to string
+     * @param resource|null $stream write png image to string
      * @return resource the same resource
      */
-    public function writeToStream($stream)
+    public function writeToStream($stream = null)
     {
-        if (try_get_resource_type($stream) !== 'stream') {
-            throw new \InvalidArgumentException('$stream should be a writable stream');
+        if ($stream) {
+            if (try_get_resource_type($stream) !== 'stream') {
+                throw new \InvalidArgumentException('$stream should be a writable stream');
+            }
+        } else {
+            $stream = fopen('php://temp', 'r+');
         }
 
         if (!isset($this->monster)) {
@@ -67,8 +71,7 @@ final class Monster
      */
     public function getImage(): string
     {
-        $stream = fopen('php://temp', 'r+');
-        $this->writeToStream($stream);
+        $stream = $this->writeToStream();
         rewind($stream);
         $image = stream_get_contents($stream);
         fclose($stream);
