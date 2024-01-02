@@ -6,8 +6,12 @@ namespace Arokettu\MonsterID;
 
 use Arokettu\MonsterID\Randomizer\FactoryInterface;
 use GdImage;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 
 const MONSTER_DEFAULT_SIZE = 120; // same as image parts size
+const MONSTER_MIME = 'image/png';
 
 /**
  * @param string $string Any string id like email or openid
@@ -51,4 +55,20 @@ function build_monster_gd(
 ): GdImage {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getGdImage();
+}
+
+/**
+ * @param string $string Any string id like email or openid
+ * @param int $size Image size (square size x size)
+ * @return ResponseInterface HTTP Response
+ */
+function build_monster_response(
+    string $string,
+    int $size = MONSTER_DEFAULT_SIZE,
+    ?ResponseFactoryInterface $responseFactory = null,
+    ?StreamFactoryInterface $streamFactory = null,
+    ?FactoryInterface $rngFactory = null,
+): ResponseInterface {
+    $monster = new Monster($string, $size, $rngFactory);
+    return $monster->getResponse($responseFactory, $streamFactory);
 }

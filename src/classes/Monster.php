@@ -6,6 +6,10 @@ namespace Arokettu\MonsterID;
 
 use Arokettu\MonsterID\Randomizer\FactoryInterface;
 use GdImage;
+use Http\Discovery\Psr17FactoryDiscovery;
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Random\Randomizer;
 
 use function Arokettu\IsResource\try_get_resource_type;
@@ -13,6 +17,7 @@ use function Arokettu\IsResource\try_get_resource_type;
 final class Monster
 {
     public const DEFAULT_SIZE = MONSTER_DEFAULT_SIZE;
+    public const MIME = MONSTER_MIME;
 
     private const PARTS_PATH = __DIR__ . '/../../assets/parts';
 
@@ -77,6 +82,18 @@ final class Monster
         fclose($stream);
 
         return $image;
+    }
+
+    public function getResponse(
+        ?ResponseFactoryInterface $responseFactory = null,
+        ?StreamFactoryInterface $streamFactory = null,
+    ): ResponseInterface {
+        $responseFactory ??= Psr17FactoryDiscovery::findResponseFactory();
+        $streamFactory ??= Psr17FactoryDiscovery::findStreamFactory();
+
+        return $responseFactory->createResponse()
+            ->withBody($streamFactory->createStreamFromResource($this->writeToStream()))
+            ->withHeader('Content-Type', self::MIME);
     }
 
     private function buildImage(): void
