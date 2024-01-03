@@ -49,6 +49,22 @@ Export GD object::
     imageavif($gd);
     imagedestroy($gd); // it's your responsibility to destroy the resource (PHP < 8.0)
 
+Get a response object::
+
+    <?php
+
+    use Psr\Http\Message\ResponseInterface;
+
+    use function Arokettu\MonsterID\build_monster_response;
+
+    class Controller
+    {
+        public function action(): ResponseInterface
+        {
+            return build_monster_response('email@example.com', 150);
+        }
+    }
+
 Monster object
 --------------
 
@@ -70,6 +86,9 @@ Monster object
     // gd
     header('Content-type: image/avif');
     imageavif($monster->getGdImage());
+
+    // response
+    $response = $monster->getResponse();
 
 Random sequences
 ================

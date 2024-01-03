@@ -3,8 +3,23 @@ Upgrade Notes
 
 .. highlight:: php
 
-Upgrade from 2.x
-================
+3.x to 4.0
+==========
+
+* Object and methods no longer accept empty string for a completely random monster.
+  Pass a random string explicitly::
+
+    <?php
+
+    use function Arokettu\MonsterID\build_monster;
+
+    // before 4.0
+    $randomMonster = build_monster();
+    // 4.0 and later
+    $randomMonster = build_monster(random_bytes(8));
+
+2.x to 3.0
+==========
 
 * The package was renamed to ``arokettu/monsterid``
 
@@ -23,8 +38,6 @@ Upgrade from 2.x
 
         use function Arokettu\MonsterID\build_monster;
 
-        require 'vendor/autoload.php';
-
         build_monster('my@email', rngFactory: new DefaultV2Factory());
 
         // or
@@ -33,8 +46,8 @@ Upgrade from 2.x
 
 * ``build()`` method was removed
 
-Upgrade from 1.x
-================
+1.x to 2.0
+==========
 
 * Expect different images to be generated
 
