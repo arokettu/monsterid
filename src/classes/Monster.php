@@ -5,8 +5,11 @@ declare(strict_types=1);
 namespace Arokettu\MonsterID;
 
 use Arokettu\MonsterID\Randomizer\FactoryInterface;
+use DomainException;
 use GdImage;
 use Http\Discovery\Psr17FactoryDiscovery;
+use InvalidArgumentException;
+use LogicException;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -30,7 +33,7 @@ final class Monster
         ?FactoryInterface $rngFactory = null
     ) {
         if ($size < 1) {
-            throw new \InvalidArgumentException('$size must be 1 or more');
+            throw new DomainException('$size must be 1 or more');
         }
 
         $this->rngFactory = $rngFactory ?? Config::getRandomizerFactory();
@@ -56,7 +59,7 @@ final class Monster
     {
         if ($stream) {
             if (try_get_resource_type($stream) !== 'stream') {
-                throw new \InvalidArgumentException('$stream should be a writable stream');
+                throw new InvalidArgumentException('$stream should be a writable stream');
             }
         } else {
             $stream = fopen('php://temp', 'r+');
@@ -119,7 +122,7 @@ final class Monster
         // create background
         $monster = imagecreatetruecolor(MONSTER_DEFAULT_SIZE, MONSTER_DEFAULT_SIZE);
         if (!$monster) {
-            throw new ImageNotCreatedException('GD image create failed'); // @codeCoverageIgnore
+            throw new LogicException('GD image create failed'); // @codeCoverageIgnore
         }
         $white = imagecolorallocate($monster, 255, 255, 255);
         imagefill($monster, 0, 0, $white);
@@ -133,7 +136,7 @@ final class Monster
 
         $partImage = imagecreatefrompng($file);
         if (!$partImage) {
-            throw new PartNotLoadedException('Failed to load ' . $file); // @codeCoverageIgnore
+            throw new LogicException('Failed to load ' . $file); // @codeCoverageIgnore
         }
         imagesavealpha($partImage, true);
         imagecopy($monster, $partImage, 0, 0, 0, 0, MONSTER_DEFAULT_SIZE, MONSTER_DEFAULT_SIZE);
@@ -159,7 +162,7 @@ final class Monster
         } else {
             $out = imagecreatetruecolor($this->size, $this->size);
             if (!$out) {
-                throw new ImageNotCreatedException('GD image create failed'); // @codeCoverageIgnore
+                throw new LogicException('GD image create failed'); // @codeCoverageIgnore
             }
             imagecopyresampled($out, $monster, 0, 0, 0, 0, $this->size, $this->size, 120, 120);
             imagedestroy($monster);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Arokettu\MonsterID\Tests;
 
 use Arokettu\MonsterID\Monster;
+use DomainException;
 use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
@@ -46,7 +47,7 @@ class CommonGenerationTest extends TestCase
 
     public function testNoNegativeSizes(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(DomainException::class);
         build_monster('test', -100);
     }
 
