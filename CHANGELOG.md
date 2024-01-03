@@ -1,5 +1,13 @@
 # Changelog
 
+## 4.x
+
+### 4.0.0
+
+* `$string` parameter is mandatory
+* Added getResponse() method to build PSR-7 response object
+* Removed all custom exceptions 
+
 ## 3.x
 
 ### 3.1.0
