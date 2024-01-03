@@ -4,6 +4,8 @@
 
 ### 4.0.0
 
+*Jan 3, 2024*
+
 * `$string` parameter is mandatory
 * Added getResponse() method to build PSR-7 response object
 * Removed all custom exceptions 
