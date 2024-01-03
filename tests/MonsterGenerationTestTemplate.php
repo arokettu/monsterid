@@ -11,6 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 use function Arokettu\MonsterID\build_monster;
 use function Arokettu\MonsterID\build_monster_gd;
+use function Arokettu\MonsterID\build_monster_response;
 use function Arokettu\MonsterID\stream_monster;
 
 abstract class MonsterGenerationTestTemplate extends TestCase
@@ -96,6 +97,13 @@ abstract class MonsterGenerationTestTemplate extends TestCase
         rewind($stream);
 
         self::assertEquals($this->getImageFile('test@example.com', 120), stream_get_contents($stream));
+    }
+
+    public function testResponse(): void
+    {
+        $response = build_monster_response('test@example.com', 240);
+
+        self::assertEquals($this->getImageFile('test@example.com', 240), $response->getBody()->getContents());
     }
 
     public function testSerialization(): void

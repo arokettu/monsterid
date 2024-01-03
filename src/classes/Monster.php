@@ -91,8 +91,11 @@ final class Monster
         $responseFactory ??= Psr17FactoryDiscovery::findResponseFactory();
         $streamFactory ??= Psr17FactoryDiscovery::findStreamFactory();
 
+        $stream = $this->writeToStream();
+        rewind($stream);
+
         return $responseFactory->createResponse()
-            ->withBody($streamFactory->createStreamFromResource($this->writeToStream()))
+            ->withBody($streamFactory->createStreamFromResource($stream))
             ->withHeader('Content-Type', self::MIME);
     }
 

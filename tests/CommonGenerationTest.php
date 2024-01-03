@@ -9,6 +9,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 
 use function Arokettu\MonsterID\build_monster;
+use function Arokettu\MonsterID\build_monster_response;
 use function Arokettu\MonsterID\stream_monster;
 
 class CommonGenerationTest extends TestCase
@@ -47,5 +48,11 @@ class CommonGenerationTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         build_monster('test', -100);
+    }
+
+    public function testResponse(): void
+    {
+        $response = build_monster_response('');
+        self::assertEquals(['image/png'], $response->getHeader('content-type'));
     }
 }
