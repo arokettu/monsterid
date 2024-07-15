@@ -21,7 +21,7 @@ const MONSTER_MIME = 'image/png';
 function build_monster(
     string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?FactoryInterface $rngFactory = null,
+    FactoryInterface|null $rngFactory = null,
 ): string {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getImage();
@@ -37,7 +37,7 @@ function stream_monster(
     $stream,
     string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?FactoryInterface $rngFactory = null,
+    FactoryInterface|null $rngFactory = null,
 ) {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->writeToStream($stream);
@@ -51,7 +51,7 @@ function stream_monster(
 function build_monster_gd(
     string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?FactoryInterface $rngFactory = null,
+    FactoryInterface|null $rngFactory = null,
 ): GdImage {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getGdImage();
@@ -65,9 +65,9 @@ function build_monster_gd(
 function build_monster_response(
     string $string,
     int $size = MONSTER_DEFAULT_SIZE,
-    ?ResponseFactoryInterface $responseFactory = null,
-    ?StreamFactoryInterface $streamFactory = null,
-    ?FactoryInterface $rngFactory = null,
+    ResponseFactoryInterface|null $responseFactory = null,
+    StreamFactoryInterface|null $streamFactory = null,
+    FactoryInterface|null $rngFactory = null,
 ): ResponseInterface {
     $monster = new Monster($string, $size, $rngFactory);
     return $monster->getResponse($responseFactory, $streamFactory);

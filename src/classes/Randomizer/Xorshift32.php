@@ -15,7 +15,8 @@ final class Xorshift32 implements Engine
 {
     public function __construct(
         private int $seed,
-    ) {}
+    ) {
+    }
 
     public function generate(): string
     {

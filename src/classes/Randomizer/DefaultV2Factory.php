@@ -10,7 +10,7 @@ final class DefaultV2Factory implements FactoryInterface
 {
     public function getRandomizer(string $seed): Engine
     {
-        $binSeed = md5($seed, true);
+        $binSeed = hash('md5', $seed, true);
 
         // first index of unpack is 1
         // convert to 32bit signed integer

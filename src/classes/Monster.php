@@ -30,7 +30,7 @@ final class Monster
     public function __construct(
         private string $string,
         private int $size = self::DEFAULT_SIZE,
-        ?FactoryInterface $rngFactory = null
+        FactoryInterface|null $rngFactory = null
     ) {
         if ($size < 1) {
             throw new DomainException('$size must be 1 or more');
@@ -88,8 +88,8 @@ final class Monster
     }
 
     public function getResponse(
-        ?ResponseFactoryInterface $responseFactory = null,
-        ?StreamFactoryInterface $streamFactory = null,
+        ResponseFactoryInterface|null $responseFactory = null,
+        StreamFactoryInterface|null $streamFactory = null,
     ): ResponseInterface {
         $responseFactory ??= Psr17FactoryDiscovery::findResponseFactory();
         $streamFactory ??= Psr17FactoryDiscovery::findStreamFactory();

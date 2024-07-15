@@ -13,7 +13,7 @@ final class DefaultV0Factory implements FactoryInterface
         // original code was:
         // $intSeed = hexdec(substr(md5($seed),0,6));
 
-        ['val' => $val] = unpack("Nval", md5($seed, true));
+        ['val' => $val] = unpack("Nval", hash('md5', $seed, true));
         $intSeed = ($val >> 8) & 0xffffff;
 
         // As the original implementation generated on PHP 7.2+
