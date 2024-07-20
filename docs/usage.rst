@@ -124,7 +124,7 @@ Setting a default factory globally
     use Arokettu\MonsterID\Randomizer\DefaultV2Factory;
     use Arokettu\MonsterID\Randomizer\DefaultV3Factory;
 
-    Config::setRandomizerFactory(); // reset to default (currently V2)
+    Config::setRandomizerFactory(); // reset to default (currently V3)
     Config::setRandomizerFactory(new DefaultV0Factory()); // set V0
     Config::setRandomizerFactory(new DefaultV1Factory()); // set V1
     Config::setRandomizerFactory(new DefaultV2Factory()); // set V2
