@@ -1,1 +1,1 @@
-furo
+sphinx-book-theme
