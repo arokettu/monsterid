@@ -91,8 +91,8 @@ final class Monster
         ResponseFactoryInterface|null $responseFactory = null,
         StreamFactoryInterface|null $streamFactory = null,
     ): ResponseInterface {
-        $responseFactory ??= Psr17FactoryDiscovery::findResponseFactory();
-        $streamFactory ??= Psr17FactoryDiscovery::findStreamFactory();
+        $responseFactory ??= Config::getResponseFactory();
+        $streamFactory ??= Config::getStreamFactory();
 
         $stream = $this->writeToStream();
         rewind($stream);
