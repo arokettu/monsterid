@@ -2,6 +2,13 @@
 
 ## 4.x
 
+### 4.1.0
+
+*Apr 3, 2025*
+
+* Removed hard dependency on php-http/discovery
+* Added setResponseFactory and setStreamFactory to Config
+
 ### 4.0.0
 
 *Jan 3, 2024*
