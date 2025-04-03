@@ -49,12 +49,12 @@
         "ext-gd": "*",
         "arokettu/is-resource": "^1.0",
         "arokettu/random-polyfill": "^1.0.1",
-        "php-http/discovery": "^1.19",
         "psr/http-factory": "^1.0"
     },
     "require-dev": {
         "arokettu/random-polyfill": ">= 1.0.1 < 1.99",
         "httpsoft/http-message": "^1.1",
+        "php-http/discovery": "^1.20",
         "phpunit/phpunit": ">= 7.0 < 10",
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^1.2025.03.27",
