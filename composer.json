@@ -57,8 +57,8 @@
         "httpsoft/http-message": "^1.1",
         "phpunit/phpunit": ">= 7.0 < 10",
         "psy/psysh": "*",
-        "sandfox.dev/code-standard": "^1.2024.07.05",
+        "sandfox.dev/code-standard": "^1.2025.03.27",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^5.4"
+        "vimeo/psalm": "^5.4 | ^6.0"
     }
 }
