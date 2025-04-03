@@ -27,9 +27,14 @@
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "php-http/discovery": false
+            "php-http/discovery": true
         },
         "sort-packages": true
+    },
+    "extra": {
+        "discovery": {
+            "psr/http-factory-implementation": "Arokettu\\MonsterID\\Tests\\Helpers\\HttpFactory"
+        }
     },
     "autoload": {
         "psr-4": {
@@ -58,7 +63,8 @@
         "phpunit/phpunit": ">= 7.0 < 10",
         "psy/psysh": "*",
         "sandfox.dev/code-standard": "^1.2025.03.27",
+        "slim/psr7": "^1.7",
         "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^5.4 | ^6.0"
+        "vimeo/psalm": "^5.4 || ^6.0"
     }
 }

@@ -7,7 +7,6 @@ namespace Arokettu\MonsterID;
 use Arokettu\MonsterID\Randomizer\FactoryInterface;
 use DomainException;
 use GdImage;
-use Http\Discovery\Psr17FactoryDiscovery;
 use InvalidArgumentException;
 use LogicException;
 use Psr\Http\Message\ResponseFactoryInterface;

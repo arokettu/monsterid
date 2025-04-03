@@ -41,7 +41,7 @@ final class Config
         );
     }
 
-    public static function setResponseFactory(ResponseFactoryInterface|null $factory): void
+    public static function setResponseFactory(ResponseFactoryInterface|null $factory = null): void
     {
         self::$responseFactory = $factory ?? self::buildDefaultResponseFactory();
     }
@@ -60,7 +60,7 @@ final class Config
         );
     }
 
-    public static function setStreamFactory(StreamFactoryInterface|null $factory): void
+    public static function setStreamFactory(StreamFactoryInterface|null $factory = null): void
     {
         self::$streamFactory = $factory ?? self::buildDefaultResponseFactory();
     }
