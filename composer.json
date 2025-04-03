@@ -1,6 +1,7 @@
 {
     "name": "arokettu/monsterid",
     "description": "MonsterID is a method to generate a unique monster image based upon a certain identifier (IP address, email address, whatever). It can be used to automatically provide personal avatar images in blog comments or other community services.",
+    "type": "library",
     "keywords": ["avatar", "monsterid"],
     "homepage": "https://sandfox.dev/php/monsterid.html",
     "license": "MIT",
@@ -12,7 +13,7 @@
         },
         {
             "name": "Anton Smirnov",
-            "email": "sandfox@sandfox.me",
+            "email": "sandfox+composer@sandfox.me",
             "homepage": "https://sandfox.me/",
             "role": "maintainer"
         }
@@ -20,7 +21,8 @@
     "support": {
         "issues": "https://gitlab.com/sandfox/monsterid/-/issues",
         "source": "https://gitlab.com/sandfox/monsterid",
-        "docs": "https://monsterid.readthedocs.io/"
+        "docs": "https://monsterid.readthedocs.io/",
+        "chat": "https://gitter.im/arokettu/community"
     },
     "config": {
         "allow-plugins": {
