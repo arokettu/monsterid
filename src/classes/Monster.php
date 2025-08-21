@@ -139,7 +139,6 @@ final class Monster
         }
         imagesavealpha($partImage, true);
         imagecopy($monster, $partImage, 0, 0, 0, 0, MONSTER_DEFAULT_SIZE, MONSTER_DEFAULT_SIZE);
-        imagedestroy($partImage);
 
         // color the body
         if ($part == 'body') {
@@ -164,7 +163,6 @@ final class Monster
                 throw new LogicException('GD image create failed'); // @codeCoverageIgnore
             }
             imagecopyresampled($out, $monster, 0, 0, 0, 0, $this->size, $this->size, 120, 120);
-            imagedestroy($monster);
             return $out;
         }
     }

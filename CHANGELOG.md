@@ -2,6 +2,10 @@
 
 ## 4.x
 
+### next
+
+* Fixed PHP 8.5 deprecations
+
 ### 4.1.0
 
 *Apr 3, 2025*
