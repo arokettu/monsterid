@@ -29,7 +29,7 @@ final class Monster
     public function __construct(
         private string $string,
         private int $size = self::DEFAULT_SIZE,
-        FactoryInterface|null $rngFactory = null
+        FactoryInterface|null $rngFactory = null,
     ) {
         if ($size < 1) {
             throw new DomainException('$size must be 1 or more');
@@ -146,7 +146,7 @@ final class Monster
                 $monster,
                 $randomizer->getInt(20, 235),
                 $randomizer->getInt(20, 235),
-                $randomizer->getInt(20, 235)
+                $randomizer->getInt(20, 235),
             );
             imagefill($monster, MONSTER_DEFAULT_SIZE / 2, MONSTER_DEFAULT_SIZE / 2, $color);
         }

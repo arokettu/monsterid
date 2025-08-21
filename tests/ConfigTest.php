@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
 use Slim\Psr7\Factory\ResponseFactory as SlimResponseFactory;
 use Slim\Psr7\Factory\StreamFactory as SlimStreamFactory;
 
-class ConfigTest extends TestCase
+final class ConfigTest extends TestCase
 {
     public function testRandomizerFactory(): void
     {

@@ -37,7 +37,7 @@ final class Config
         $factoryFactory = [Psr17FactoryDiscovery::class, 'findResponseFactory'];
 
         return \is_callable($factoryFactory) ? $factoryFactory() : throw new RuntimeException(
-            'Response Factory not found. Please pass it explicitly or install php-http/discovery'
+            'Response Factory not found. Please pass it explicitly or install php-http/discovery',
         );
     }
 
@@ -56,7 +56,7 @@ final class Config
         $factoryFactory = [Psr17FactoryDiscovery::class, 'findStreamFactory'];
 
         return \is_callable($factoryFactory) ? $factoryFactory() : throw new RuntimeException(
-            'StreamFactory not found. Please pass it explicitly or install php-http/discovery'
+            'StreamFactory not found. Please pass it explicitly or install php-http/discovery',
         );
     }
 

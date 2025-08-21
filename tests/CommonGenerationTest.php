@@ -13,7 +13,7 @@ use function Arokettu\MonsterID\build_monster;
 use function Arokettu\MonsterID\build_monster_response;
 use function Arokettu\MonsterID\stream_monster;
 
-class CommonGenerationTest extends TestCase
+final class CommonGenerationTest extends TestCase
 {
     public function testImageSize(): void
     {

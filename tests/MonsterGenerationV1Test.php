@@ -7,7 +7,7 @@ namespace Arokettu\MonsterID\Tests;
 use Arokettu\MonsterID\Randomizer\DefaultV1Factory;
 use Arokettu\MonsterID\Randomizer\FactoryInterface;
 
-class MonsterGenerationV1Test extends MonsterGenerationTestTemplate
+final class MonsterGenerationV1Test extends MonsterGenerationTestTemplate
 {
     protected function getDir(): string
     {
