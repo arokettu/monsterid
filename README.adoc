@@ -1,6 +1,6 @@
 = MonsterID
 
-:DonPark:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
+:DonPark:               https://web.archive.org/web/20070228043213/http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
 :CombinatoricCritters:  http://www.levitated.net/bones/walkingFaces/index.html
 
 link:https://packagist.org/packages/arokettu/monsterid[image:https://img.shields.io/packagist/v/arokettu/monsterid.svg?style=flat-square[Packagist]]

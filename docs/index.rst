@@ -40,9 +40,9 @@ Upgraded and maintained by `Anton "Sand Fox" Smirnov <SandFox_>`_.
 
 Original implementation can be found `here <upstream_>`_.
 
-.. _Don Park:               http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
+.. _Don Park:               https://web.archive.org/web/20070228043213/http://www.docuverse.com/blog/donpark/2007/01/18/visual-security-9-block-ip-identification
 .. _Combinatoric Critters:  http://www.levitated.net/bones/walkingFaces/index.html
-.. _Andreas Gohr:           http://www.splitbrain.org
+.. _Andreas Gohr:           https://www.splitbrain.org
 .. _MIT License:            https://opensource.org/licenses/MIT
 .. _SandFox:                https://sandfox.me/
 .. _upstream:               https://github.com/splitbrain/monsterID
